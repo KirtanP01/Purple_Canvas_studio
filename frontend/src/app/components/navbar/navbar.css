@@ -1,0 +1,156 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
+/* Navigation Styles */
+.navbar {
+  display: flex;
+  padding: 12px 40px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid #E5E8EB;
+  position: relative;
+  background: #FAF7FC;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.logo-placeholder {
+  width: 16px;
+  flex: 1 0 0;
+  position: relative;
+}
+
+.brand-title {
+  display: flex;
+  height: 23px;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 23px;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 1 0 0;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 36px;
+  position: relative;
+}
+
+.nav-link {
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.book-now-btn {
+  display: flex;
+  height: 40px;
+  min-width: 84px;
+  max-width: 480px;
+  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #591AE5;
+  border: none;
+  color: #FAF7FC;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  cursor: pointer;
+  position: relative;
+}
+
+.book-now-btn:hover {
+  background: #4A14C7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .navbar-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .navbar-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 16px;
+  }
+  
+  .nav-link {
+    font-size: 12px;
+  }
+
+  .brand-title {
+    font-size: 16px;
+  }
+}

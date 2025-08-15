@@ -1,0 +1,184 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
+.contact-page {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: #FFF;
+}
+
+/* Navigation Styles */
+.navbar {
+  background: #FFF;
+  border-bottom: 1px solid #E5E8EB;
+  padding: 12px 40px;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0 40px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logo-image {
+  width: 57px;
+  height: 58px;
+  aspect-ratio: 57/58;
+  position: relative;
+}
+
+.brand-title {
+  margin: 0;
+  color: #120D1C;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23px;
+  font-feature-settings: 'dlig' on;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-link {
+  color: #120D1C;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #664F96;
+  text-decoration: underline;
+}
+
+.book-now-btn {
+  background: #664F96;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.book-now-btn:hover {
+  background: #553d7a;
+}
+
+.contact-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-header h1 {
+  color: #120D1C;
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.contact-content {
+  color: #200135;
+  line-height: 1.6;
+}
+
+.contact-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-family: 'Oldenburg', -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.contact-info {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 12px;
+  margin: 30px 0;
+  border-left: 4px solid rgba(79, 9, 217, 1);
+}
+
+.contact-info h3 {
+  color: #120D1C;
+  font-family: 'Poetsen One', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.back-link {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.back-link a {
+  color: #664F96;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.back-link a:hover {
+  color: rgba(79, 9, 217, 1);
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 20px;
+  }
+  
+  .contact-header h1 {
+    font-size: 36px;
+  }
+  
+  .contact-info {
+    padding: 20px;
+  }
+}

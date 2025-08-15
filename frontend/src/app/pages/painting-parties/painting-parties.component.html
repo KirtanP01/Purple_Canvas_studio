@@ -1,0 +1,133 @@
+<div class="painting-parties-page">
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="navbar-content">
+      <div class="logo-brand-container">
+        <img class="logo-image" src="https://api.builder.io/api/v1/image/assets/TEMP/0f439a1807bf5abeb1404f1ca96e255adfe63e71?width=114" alt="Purple Canvas Studio Logo" />
+        
+        <div class="navbar-brand">
+          <a [routerLink]="['/']" class="brand-title">
+            <span class="brand-purple">Purple</span>
+            <span class="brand-space"> </span>
+            <span class="brand-canvas">Canvas</span>
+            <span class="brand-space"> </span>
+            <span class="brand-studio">Studio</span>
+          </a>
+        </div>
+      </div>
+
+            <nav class="navbar-nav">
+        <div class="nav-links">
+          <a href="#" class="nav-link">Activities</a>
+          <a href="http://purplecanvasshop.s3-website-us-east-1.amazonaws.com/" target="_blank" class="nav-link">Shop</a>
+          <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
+          <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
+          <a [routerLink]="['/about']" class="nav-link">About</a>
+          <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">Painting Parties</h1>
+          <p class="hero-description">
+            Celebrate your special occasion with a unique and creative painting party at Purple Canvas Studio. 
+            Our parties are perfect for birthdays, bachelorette parties, corporate events, and more. 
+            We provide all the materials and guidance, so you can relax and enjoy the fun!
+          </p>
+        </div>
+      </section>
+
+      <!-- Party Packages Section -->
+      <section class="party-packages">
+        <h2 class="section-title">Party Packages</h2>
+        
+        <!-- Basic Package -->
+        <div class="package-card">
+          <div class="package-content">
+            <div class="package-info">
+              <h3 class="package-title">Basic Package</h3>
+              <p class="package-description">
+                Includes a 2-hour painting session with a professional instructor, all art supplies, 
+                and a complimentary beverage for each guest.
+              </p>
+              <button class="learn-more-btn" (click)="onLearnMore('basic')">Learn More</button>
+            </div>
+            <img class="package-image" src="https://api.builder.io/api/v1/image/assets/TEMP/286c115bac8f5f89218f4e17065c8ee5f1cd9a51?width=640" alt="Basic Package">
+          </div>
+        </div>
+
+        <!-- Premium Package -->
+        <div class="package-card">
+          <div class="package-content">
+            <div class="package-info">
+              <h3 class="package-title">Premium Package</h3>
+              <p class="package-description">
+                Enhance your party with a 3-hour painting session, a wider selection of art supplies, 
+                personalized party favors, and a complimentary beverage and snack for each guest.
+              </p>
+              <button class="learn-more-btn" (click)="onLearnMore('premium')">Learn More</button>
+            </div>
+            <img class="package-image" src="https://api.builder.io/api/v1/image/assets/TEMP/9ac69df69937258a1ccc3fdec38c3f324049bc64?width=640" alt="Premium Package">
+          </div>
+        </div>
+
+        <!-- Deluxe Package -->
+        <div class="package-card">
+          <div class="package-content">
+            <div class="package-info">
+              <h3 class="package-title">Deluxe Package</h3>
+              <p class="package-description">
+                Our most luxurious package features a 4-hour painting session, premium art supplies, 
+                custom-designed party favors, a catered meal, and a selection of beverages for each guest.
+              </p>
+              <button class="learn-more-btn" (click)="onLearnMore('deluxe')">Learn More</button>
+            </div>
+            <img class="package-image" src="https://api.builder.io/api/v1/image/assets/TEMP/161ad5436fd32ede48eaba46be82193feb934274?width=640" alt="Deluxe Package">
+          </div>
+        </div>
+      </section>
+
+      <!-- Party Themes Section -->
+      <section class="party-themes">
+        <h2 class="section-title">Party Themes</h2>
+        <div class="themes-grid">
+          <div class="theme-card">
+            <img class="theme-image" src="https://api.builder.io/api/v1/image/assets/TEMP/a7f5c9ca369e0574f9e4a4bba42cca2cabe61a7f?width=446" alt="Nature's Canvas">
+            <h3 class="theme-title">Nature's Canvas</h3>
+          </div>
+          <div class="theme-card">
+            <img class="theme-image" src="https://api.builder.io/api/v1/image/assets/TEMP/fdfb72b8252e00c26c09ef695ead1dd6f0215bc0?width=446" alt="Cityscapes">
+            <h3 class="theme-title">Cityscapes</h3>
+          </div>
+          <div class="theme-card">
+            <img class="theme-image" src="https://api.builder.io/api/v1/image/assets/TEMP/43b159d08ccd0bf9e95eaaa2aca014d37d2a8992?width=446" alt="Abstract Expressions">
+            <h3 class="theme-title">Abstract Expressions</h3>
+          </div>
+          <div class="theme-card">
+            <img class="theme-image" src="https://api.builder.io/api/v1/image/assets/TEMP/35da21e739115bde26fe88e6546493954d2b310b?width=446" alt="Pop Art">
+            <h3 class="theme-title">Pop Art</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section class="pricing-section">
+        <h2 class="section-title">Pricing</h2>
+        <p class="pricing-description">
+          Our party packages start at $50 per person, with a minimum of 10 guests. 
+          Contact us for a custom quote based on your specific requirements and preferences.
+        </p>
+        <div class="cta-section">
+          <button class="signup-btn" (click)="onSignUp()">Sign Up</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

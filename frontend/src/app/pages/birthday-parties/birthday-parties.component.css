@@ -1,0 +1,902 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+
+.birthday-parties-page {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  display: flex;
+  height: auto;
+  min-height: 800px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: #FFF;
+  position: relative;
+}
+
+/* Navigation Styles */
+.navbar {
+  display: flex;
+  padding: 12px 40px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid #E5E8EB;
+  position: relative;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.navbar-brand {
+  display: flex;
+  height: 23px;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.logo-placeholder {
+  width: 16px;
+  flex: 1 0 0;
+  position: relative;
+}
+
+.brand-title {
+  align-self: stretch;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px;
+  position: relative;
+  text-decoration: none;
+  display: block;
+}
+
+.brand-title:hover {
+  text-decoration: none;
+}
+
+.brand-title:visited {
+  color: #120D1C;
+}
+
+.brand-purple {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: rgba(79, 9, 217, 1);
+}
+
+.brand-space {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(18, 13, 28, 1);
+}
+
+.brand-canvas {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: rgba(18, 13, 28, 1);
+}
+
+.brand-studio {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(18, 13, 28, 1);
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 1 0 0;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 36px;
+  position: relative;
+}
+
+.nav-link {
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.book-now-btn {
+  display: flex;
+  height: 40px;
+  min-width: 84px;
+  max-width: 480px;
+  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #591AE5;
+  border: none;
+  color: #FAF7FC;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  cursor: pointer;
+  position: relative;
+}
+
+.book-now-btn:hover {
+  background: #4A14C7;
+}
+
+/* Main Content */
+.main-content {
+  padding: 40px 160px;
+  display: flex;
+  justify-content: center;
+  align-self: stretch;
+  flex: 1;
+}
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  margin: 0;
+}
+
+/* Hero Description */
+.hero-description {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.hero-text {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  margin: 0 0 16px 0;
+}
+
+.hero-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Included Section */
+.included-section {
+  background: linear-gradient(135deg, #FAF7FC 0%, #F0EAFF 100%);
+  border: 2px solid #AB8BF0;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.section-title {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin: 0 0 24px 0;
+}
+
+.included-container {
+  display: flex;
+  justify-content: center;
+}
+
+.included-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.included-list li {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  margin: 0 0 12px 0;
+  padding-left: 8px;
+}
+
+.included-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Party Description */
+.party-description {
+  background: #FFF;
+  border: 1px solid #E5E8EB;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.description-text {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  margin: 0;
+}
+
+/* Call to Action */
+.cta-section {
+  background: linear-gradient(135deg, #4f09d9 0%, #AB8BF0 100%);
+  border-radius: 20px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(79, 9, 217, 0.3);
+}
+
+.cta-title {
+  color: white;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Section */
+.contact-section {
+  background: linear-gradient(135deg, #FAF7FC 0%, #F0EAFF 100%);
+  border: 1px solid #D6D1E8;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.contact-title {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  margin: 0 0 20px 0;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.contact-item {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.contact-item a {
+  color: #4f09d9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+  color: #AB8BF0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 20px 40px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .hero-text {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .included-list li {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .cta-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .contact-item {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 20px 20px;
+  }
+
+  .included-section,
+  .party-description,
+  .cta-section,
+  .contact-section {
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .included-list li {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .cta-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+/* Section Titles */
+.section-title {
+  margin: 0;
+  display: flex;
+  height: 60px;
+  padding: 20px 16px 12px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+/* Party Packages */
+.party-packages {
+  align-self: stretch;
+}
+
+.package-card {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+}
+
+.package-content {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 12px;
+  background: #FAF7FC;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.10);
+  position: relative;
+}
+
+.package-image {
+  height: 256px;
+  flex: 1 0 0;
+  border-radius: 12px;
+  position: relative;
+  object-fit: cover;
+}
+
+.package-info {
+  display: flex;
+  min-width: 288px;
+  padding: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1 0 0;
+  position: relative;
+}
+
+.package-category {
+  align-self: stretch;
+  color: #664F96;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  position: relative;
+}
+
+.package-title {
+  margin: 0;
+  display: flex;
+  height: 23px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 23px;
+}
+
+.package-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
+  position: relative;
+}
+
+.package-description {
+  margin: 0;
+  display: flex;
+  width: 344px;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  color: #664F96;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.learn-more-btn {
+  display: flex;
+  height: 32px;
+  min-width: 84px;
+  max-width: 480px;
+  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #591AE5;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  color: #FAF7FC;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.learn-more-btn:hover {
+  background: #4A14C7;
+}
+
+/* Party Themes */
+.party-themes {
+  align-self: stretch;
+}
+
+.themes-container {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+  position: relative;
+}
+
+.themes-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1 0 0;
+  align-self: stretch;
+  position: relative;
+}
+
+.theme-card {
+  display: flex;
+  width: 176px;
+  padding-bottom: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+  position: relative;
+}
+
+.theme-image {
+  height: 176px;
+  align-self: stretch;
+  border-radius: 12px;
+  position: relative;
+  object-fit: cover;
+}
+
+.theme-title {
+  margin: 0;
+  align-self: stretch;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  position: relative;
+}
+
+/* Catering Section */
+.catering-section {
+  align-self: stretch;
+}
+
+.catering-description {
+  margin: 0;
+  display: flex;
+  padding: 4px 16px 12px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* Pricing and Booking Section */
+.pricing-booking-section {
+  align-self: stretch;
+}
+
+.pricing-description {
+  margin: 0;
+  display: flex;
+  padding: 4px 16px 12px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* Booking Form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.form-field {
+  display: flex;
+  max-width: 480px;
+  padding: 12px 16px;
+  align-items: flex-end;
+  align-content: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+}
+
+.field-label {
+  display: flex;
+  padding-bottom: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
+.field-input {
+  display: flex;
+  height: 56px;
+  padding: 15px;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 12px;
+  border: 1px solid #D6D1E8;
+  background: #FAF7FC;
+  position: relative;
+  color: #664F96;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #591AE5;
+}
+
+.field-input::placeholder {
+  color: #664F96;
+}
+
+.field-textarea {
+  display: flex;
+  min-height: 144px;
+  padding: 15px;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 12px;
+  border: 1px solid #D6D1E8;
+  background: #FAF7FC;
+  position: relative;
+  color: #664F96;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.field-textarea:focus {
+  outline: none;
+  border-color: #591AE5;
+}
+
+.field-textarea::placeholder {
+  color: #664F96;
+}
+
+.form-submit {
+  display: flex;
+  padding: 12px 16px;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+}
+
+.submit-btn {
+  display: flex;
+  width: 84px;
+  height: 40px;
+  min-width: 84px;
+  max-width: 480px;
+  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #591AE5;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  color: #FAF7FC;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #4A14C7;
+}
+
+.submit-btn:disabled {
+  background: #D6D1E8;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 20px 80px;
+  }
+  
+  .themes-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .theme-card {
+    width: calc(50% - 6px);
+    min-width: 160px;
+  }
+
+  .package-content {
+    flex-direction: column;
+  }
+
+  .package-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .package-info {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .navbar-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .navbar-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .main-content {
+    padding: 20px 20px;
+  }
+  
+  .themes-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .theme-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .package-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .package-description {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .nav-links {
+    gap: 16px;
+  }
+  
+  .nav-link {
+    font-size: 12px;
+  }
+
+  .brand-title {
+    font-size: 16px;
+  }
+
+  .form-field {
+    padding: 8px 16px;
+  }
+}

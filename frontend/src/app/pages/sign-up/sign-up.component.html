@@ -1,0 +1,177 @@
+<div class="sign-up-page">
+  <div class="page-container">
+    
+    <!-- Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-content">
+        <div class="logo-brand-container">
+          <img class="logo-image" src="https://api.builder.io/api/v1/image/assets/TEMP/0f439a1807bf5abeb1404f1ca96e255adfe63e71?width=114" alt="Purple Canvas Studio Logo" />
+          
+          <div class="navbar-brand">
+            <a [routerLink]="['/']" class="brand-title">
+              <span class="brand-purple">Purple</span>
+              <span class="brand-space"> </span>
+              <span class="brand-canvas">Canvas</span>
+              <span class="brand-space"> </span>
+              <span class="brand-studio">Studio</span>
+            </a>
+          </div>
+        </div>
+
+                <nav class="navbar-nav">
+          <div class="nav-links">
+            <a href="#" class="nav-link">Activities</a>
+            <a href="http://purplecanvasshop.s3-website-us-east-1.amazonaws.com/" target="_blank" class="nav-link">Shop</a>
+            <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
+            <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
+            <a [routerLink]="['/about']" class="nav-link">About</a>
+            <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-container">
+        
+        <!-- Party Themes Section -->
+        <section class="section-header">
+          <h1 class="section-title">Party Themes</h1>
+        </section>
+
+        <!-- Booking Information Section -->
+        <section class="booking-info-section">
+          <h2 class="section-title">Booking Information</h2>
+          <p class="booking-description">
+            To book your painting party, please fill out the form below or contact us directly at (555) 123-4567. We recommend booking at least 4 weeks in advance to secure your preferred date and time.
+          </p>
+        </section>
+
+        <!-- Booking Form -->
+        <form class="booking-form" (ngSubmit)="onSubmitBooking()">
+          
+          <!-- Name Field -->
+          <div class="form-field">
+            <label class="field-label">Name</label>
+            <input 
+              type="text" 
+              class="field-input" 
+              placeholder="Enter your name"
+              [(ngModel)]="formData.name"
+              name="name"
+              required>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-field">
+            <label class="field-label">Email</label>
+            <input 
+              type="email" 
+              class="field-input" 
+              placeholder="Enter your email"
+              [(ngModel)]="formData.email"
+              name="email"
+              required>
+          </div>
+
+          <!-- Phone Field -->
+          <div class="form-field">
+            <label class="field-label">Phone</label>
+            <input 
+              type="tel" 
+              class="field-input" 
+              placeholder="Enter your phone number"
+              [(ngModel)]="formData.phone"
+              name="phone"
+              required>
+          </div>
+
+          <!-- Date Field -->
+          <div class="form-field">
+            <label class="field-label">Date</label>
+            <input 
+              type="date" 
+              class="field-input" 
+              [(ngModel)]="formData.date"
+              name="date"
+              required>
+          </div>
+
+          <!-- Number of Guests Field -->
+          <div class="form-field">
+            <label class="field-label">Number of Guests</label>
+            <input 
+              type="number" 
+              class="field-input" 
+              placeholder="Enter number of guests"
+              min="1"
+              [(ngModel)]="formData.numberOfGuests"
+              name="numberOfGuests"
+              required>
+          </div>
+
+          <!-- Package Field -->
+          <div class="form-field">
+            <label class="field-label">Package</label>
+            <div class="select-container">
+              <select 
+                class="field-select" 
+                [(ngModel)]="formData.package"
+                name="package">
+                <option value="" disabled>Select package</option>
+                <option *ngFor="let pkg of packages" [value]="pkg.value">
+                  {{ pkg.label }}
+                </option>
+              </select>
+              <div class="select-arrow">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="#664F96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theme Field -->
+          <div class="form-field">
+            <label class="field-label">Theme</label>
+            <div class="select-container">
+              <select 
+                class="field-select" 
+                [(ngModel)]="formData.theme"
+                name="theme">
+                <option value="" disabled>Select theme</option>
+                <option *ngFor="let theme of themes" [value]="theme.value">
+                  {{ theme.label }}
+                </option>
+              </select>
+              <div class="select-arrow">
+                <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="#664F96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Notes Field -->
+          <div class="form-field textarea-field">
+            <label class="field-label">Additional Notes</label>
+            <textarea 
+              class="field-textarea" 
+              placeholder="Any special requests or additional information..."
+              [(ngModel)]="formData.additionalNotes"
+              name="additionalNotes"
+              rows="6">
+            </textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-submit">
+            <button type="submit" class="submit-btn">Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </main>
+  </div>
+</div>

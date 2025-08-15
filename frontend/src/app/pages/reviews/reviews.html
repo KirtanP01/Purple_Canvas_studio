@@ -1,0 +1,151 @@
+<!-- Header/Navbar Section from Home Page -->
+<div class="header-section">
+  <header class="navbar">
+    <div class="navbar-content">
+      <div class="logo-brand-container">
+        <img class="logo-image" src="https://api.builder.io/api/v1/image/assets/TEMP/0f439a1807bf5abeb1404f1ca96e255adfe63e71?width=114" alt="Purple Canvas Studio Logo" />
+        
+        <div class="navbar-brand">
+          <a [routerLink]="['/']" class="brand-title">
+            <span class="brand-purple">Purple</span>
+            <span class="brand-space"> </span>
+            <span class="brand-canvas">Canvas</span>
+            <span class="brand-space"> </span>
+            <span class="brand-studio">Studio</span>
+          </a>
+        </div>
+      </div>
+
+      <nav class="navbar-nav">
+        <div class="nav-links">
+          <a href="#" class="nav-link">Activities</a>
+          <a href="http://purplecanvasshop.s3-website-us-east-1.amazonaws.com/" target="_blank" class="nav-link">Shop</a>
+          <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
+          <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
+          <a [routerLink]="['/about']" class="nav-link">About</a>
+          <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<div class="reviews-container">
+  <!-- Reviews Header -->
+  <div class="reviews-header">
+    <h1 class="reviews-title">Customer Reviews</h1>
+    <p class="reviews-subtitle">See what our amazing customers have to say about Purple Canvas Studio</p>
+    
+    <!-- Overall Rating Summary -->
+    <div class="rating-summary">
+      <div class="average-rating">
+        <span class="rating-number">{{ getAverageRating() }}</span>
+        <div class="stars-display">
+          <span *ngFor="let star of getStarArray(getAverageRating())" 
+                [class]="star ? 'star filled' : 'star empty'">★</span>
+        </div>
+        <span class="total-reviews">Based on {{ getTotalReviews() }} reviews</span>
+      </div>
+      
+      <!-- Write Review Button -->
+      <button class="write-review-btn" (click)="toggleSubmissionForm()">
+        {{ showSubmissionForm ? 'Cancel' : 'Write a Review' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Submission Success Message -->
+  <div *ngIf="submissionMessage" class="submission-message">
+    {{ submissionMessage }}
+  </div>
+
+  <!-- Review Submission Form -->
+  <div *ngIf="showSubmissionForm" class="review-form-container">
+    <div class="review-form">
+      <h3>Share Your Experience</h3>
+      <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" 
+                   id="name" 
+                   name="name"
+                   [(ngModel)]="newReview.name" 
+                   required 
+                   placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" 
+                   id="email" 
+                   name="email"
+                   [(ngModel)]="newReview.email" 
+                   required 
+                   placeholder="your.email@example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Rating *</label>
+          <div class="rating-input">
+            <span *ngFor="let star of [1,2,3,4,5]; let i = index" 
+                  class="rating-star"
+                  [class.active]="i < newReview.rating"
+                  (click)="newReview.rating = i + 1">
+              ★
+            </span>
+            <span class="rating-text">{{ newReview.rating }} out of 5 stars</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Your Review *</label>
+          <textarea id="comment" 
+                    name="comment"
+                    [(ngModel)]="newReview.comment" 
+                    required 
+                    rows="4" 
+                    placeholder="Tell us about your experience at Purple Canvas Studio..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" (click)="toggleSubmissionForm()">Cancel</button>
+          <button type="submit" class="submit-btn" [disabled]="!reviewForm.form.valid">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Reviews Display -->
+  <div class="reviews-list">
+    <div *ngFor="let review of approvedReviews" class="review-card">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar">{{ review.name.charAt(0).toUpperCase() }}</div>
+          <div class="reviewer-details">
+            <h4 class="reviewer-name">{{ review.name }}</h4>
+            <span class="review-date">{{ review.date | date:'MMM d, yyyy' }}</span>
+          </div>
+        </div>
+        
+        <div class="review-rating">
+          <span *ngFor="let star of getStarArray(review.rating)" 
+                [class]="star ? 'star filled' : 'star empty'">★</span>
+        </div>
+      </div>
+      
+      <div class="review-content">
+        <p>{{ review.comment }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="approvedReviews.length === 0" class="empty-reviews">
+    <h3>No reviews yet</h3>
+    <p>Be the first to share your experience with Purple Canvas Studio!</p>
+    <button class="write-first-review-btn" (click)="toggleSubmissionForm()">Write the First Review</button>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<!-- Header/Navbar      <nav class="navbar-nav">
+        <div class="nav-links">
+          <a href="#" class="nav-link">Activities</a>
+          <a href="http://purplecanvasshop.s3-website-us-east-1.amazonaws.com/" target="_blank" class="nav-link">Shop</a>
+          <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
+          <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
+          <a [routerLink]="['/about']" class="nav-link">About</a>
+          <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+        </div>
+      </nav>rom Home Page -->
+<div class="header-section">
+  <header class="navbar">
+    <div class="navbar-content">
+      <div class="logo-brand-container">
+        <img class="logo-image" src="https://api.builder.io/api/v1/image/assets/TEMP/0f439a1807bf5abeb1404f1ca96e255adfe63e71?width=114" alt="Purple Canvas Studio Logo" />
+        
+        <div class="navbar-brand">
+          <a [routerLink]="['/']" class="brand-title">
+            <span class="brand-purple">Purple</span>
+            <span class="brand-space"> </span>
+            <span class="brand-canvas">Canvas</span>
+            <span class="brand-space"> </span>
+            <span class="brand-studio">Studio</span>
+          </a>
+        </div>
+      </div>
+
+      <nav class="navbar-nav">
+        <div class="nav-links">
+          <a href="#" class="nav-link">Activities</a>
+          <a href="#" class="nav-link">Shop</a>
+          <a href="#" class="nav-link">Reviews</a>
+          <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
+          <a [routerLink]="['/about']" class="nav-link">About</a>
+          <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<div class="gallery-container">
+  <h1 class="gallery-title">Purple Canvas Studio Gallery</h1>
+  <p class="gallery-subtitle">Explore our creative artwork and memorable moments</p>
+  
+  <div class="collage-grid">
+    <div class="collage-item" *ngFor="let image of images; let i = index" 
+         [class]="'item-' + (i % 6 + 1)">
+      <img [src]="image.path" [alt]="image.name" 
+           (click)="openLightbox(i)"
+           loading="lazy">
+      <div class="image-overlay">
+        <span class="image-title">{{image.name}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" *ngIf="lightboxOpen" (click)="closeLightbox()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <span class="close-btn" (click)="closeLightbox()">&times;</span>
+      <img [src]="currentImage?.path" [alt]="currentImage?.name">
+      <div class="lightbox-navigation">
+        <button class="nav-btn prev" (click)="previousImage()" [disabled]="currentImageIndex === 0">&#8249;</button>
+        <span class="image-counter">{{currentImageIndex + 1}} / {{images.length}}</span>
+        <button class="nav-btn next" (click)="nextImage()" [disabled]="currentImageIndex === images.length - 1">&#8250;</button>
+      </div>
+    </div>
+  </div>
+</div>

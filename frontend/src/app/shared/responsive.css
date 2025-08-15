@@ -1,0 +1,264 @@
+/* Shared Responsive Utilities for Purple Canvas Studio */
+
+/* Mobile-first responsive breakpoints */
+:root {
+  --mobile-small: 320px;
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop-small: 992px;
+  --desktop: 1200px;
+  --desktop-large: 1440px;
+}
+
+/* Common responsive utilities */
+.mobile-hidden {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.tablet-hidden {
+  display: block;
+}
+
+.tablet-only {
+  display: none;
+}
+
+.desktop-hidden {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+/* Mobile breakpoints */
+@media (max-width: 767px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: block !important;
+  }
+  
+  /* Common mobile adjustments */
+  .mobile-center {
+    text-align: center !important;
+  }
+  
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+  
+  .mobile-no-gap {
+    gap: 0 !important;
+  }
+  
+  .mobile-small-gap {
+    gap: 8px !important;
+  }
+  
+  .mobile-medium-gap {
+    gap: 16px !important;
+  }
+}
+
+/* Tablet breakpoints */
+@media (min-width: 768px) and (max-width: 991px) {
+  .tablet-hidden {
+    display: none !important;
+  }
+  
+  .tablet-only {
+    display: block !important;
+  }
+}
+
+/* Desktop breakpoints */
+@media (min-width: 992px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+  
+  .desktop-only {
+    display: block !important;
+  }
+}
+
+/* Responsive font scaling */
+.responsive-text-xs {
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+}
+
+.responsive-text-sm {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.responsive-text-base {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+.responsive-text-lg {
+  font-size: clamp(1.125rem, 3vw, 1.25rem);
+}
+
+.responsive-text-xl {
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+}
+
+.responsive-text-2xl {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.responsive-text-3xl {
+  font-size: clamp(1.875rem, 5vw, 3rem);
+}
+
+.responsive-text-4xl {
+  font-size: clamp(2.25rem, 6vw, 4rem);
+}
+
+/* Responsive spacing */
+.responsive-p-sm {
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.responsive-p-md {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.responsive-p-lg {
+  padding: clamp(1.5rem, 4vw, 2rem);
+}
+
+.responsive-p-xl {
+  padding: clamp(2rem, 5vw, 3rem);
+}
+
+.responsive-m-sm {
+  margin: clamp(0.5rem, 2vw, 1rem);
+}
+
+.responsive-m-md {
+  margin: clamp(1rem, 3vw, 1.5rem);
+}
+
+.responsive-m-lg {
+  margin: clamp(1.5rem, 4vw, 2rem);
+}
+
+.responsive-m-xl {
+  margin: clamp(2rem, 5vw, 3rem);
+}
+
+/* Responsive containers */
+.responsive-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.responsive-container-wide {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.responsive-container-narrow {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+/* Touch-friendly targets for mobile */
+@media (max-width: 767px) {
+  button,
+  .clickable,
+  .nav-link,
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+  }
+}
+
+/* Prevent horizontal scroll on small screens */
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  * {
+    max-width: 100%;
+  }
+  
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize images for retina displays */
+  .retina-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .landscape-adjust {
+    height: 70vh;
+  }
+  
+  .navbar {
+    padding: 8px 15px;
+  }
+  
+  .nav-links {
+    gap: 12px;
+  }
+}
+
+/* Extra small devices optimization */
+@media (max-width: 320px) {
+  .responsive-container,
+  .responsive-container-wide,
+  .responsive-container-narrow {
+    padding: 0 8px;
+  }
+  
+  button,
+  .btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  
+  h1, .h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2, .h2 {
+    font-size: 1.25rem;
+  }
+  
+  h3, .h3 {
+    font-size: 1.125rem;
+  }
+}

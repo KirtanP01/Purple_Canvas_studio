@@ -1,0 +1,1185 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
+/* Main container */
+.art-classes-page {
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #FFF;
+}
+
+.page-container {
+  display: flex;
+  height: auto;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: #FFF;
+  position: relative;
+}
+
+/* Header/Navbar */
+@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap');
+
+.navbar {
+  display: flex;
+  padding: 12px 40px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid #E5E8EB;
+  position: relative;
+  background: #FFF;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.logo-image {
+  width: 57px;
+  height: 58px;
+  aspect-ratio: 57/58;
+  position: relative;
+}
+
+.navbar-brand {
+  display: flex;
+  height: 23px;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.brand-title {
+  align-self: stretch;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px;
+  position: relative;
+  text-decoration: none;
+  display: block;
+}
+
+.brand-title:hover {
+  text-decoration: none;
+}
+
+.brand-title:visited {
+  color: #120D1C;
+}
+
+.brand-purple {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: rgba(79, 9, 217, 1);
+}
+
+.brand-space {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(18, 13, 28, 1);
+}
+
+.brand-canvas {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: rgba(18, 13, 28, 1);
+}
+
+.brand-studio {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(18, 13, 28, 1);
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 32px;
+  flex: 1 0 0;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 36px;
+  position: relative;
+}
+
+.nav-link {
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.enroll-now-btn {
+  display: flex;
+  height: 40px;
+  min-width: 84px;
+  max-width: 480px;
+  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #591AE5;
+  border: none;
+  color: #FAF7FC;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.enroll-now-btn:hover {
+  background: #4A14C7;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  padding: 20px 160px;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  flex: 1;
+}
+
+.content-container {
+  display: flex;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  row-gap: 12px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Page Subtitle */
+.page-subtitle {
+  color: #664F96;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 24px;
+  margin: 8px 0 0 0;
+  text-align: center;
+}
+
+/* Promotion Banner */
+.promotion-banner {
+  background: linear-gradient(135deg, #4f09d9 0%, #AB8BF0 100%);
+  border-radius: 20px;
+  margin: 20px auto;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(79, 9, 217, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+  max-width: 600px;
+  align-self: center;
+}
+
+.promotion-content {
+  color: white;
+  text-align: center;
+}
+
+.promotion-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  margin: 0 0 16px 0;
+}
+
+.promotion-price {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+  margin: 16px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.promotion-description {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 8px 0;
+  opacity: 0.9;
+}
+
+.promotion-note {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 12px 0 0 0;
+  opacity: 0.8;
+}
+
+/* Pulse animation for promotion banner */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Sections */
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  padding: 20px 16px 12px 16px;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  margin: 0;
+  align-self: stretch;
+}
+
+.section-content {
+  padding: 4px 16px 12px 16px;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+  align-self: stretch;
+}
+
+/* Schedule Table */
+.schedule-table {
+  padding: 12px 16px;
+  align-self: stretch;
+}
+
+.table-container {
+  border-radius: 12px;
+  border: 1px solid #D6D1E8;
+  background: #FAF7FC;
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  align-items: flex-start;
+  background: #FAF7FC;
+}
+
+.header-cell {
+  padding: 12px 16px;
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.class-name-header {
+  width: 250px;
+}
+
+.instructor-header {
+  width: 237px;
+}
+
+.schedule-header {
+  width: 248px;
+}
+
+.skill-level-header {
+  width: 191px;
+}
+
+.table-row {
+  display: flex;
+  height: 72px;
+  align-items: flex-start;
+  border-top: 1px solid #E5E8EB;
+}
+
+.table-cell {
+  height: 72px;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.class-name-cell {
+  width: 250px;
+  color: #120D1C;
+}
+
+.instructor-cell,
+.schedule-cell {
+  color: #664F96;
+}
+
+.instructor-cell {
+  width: 237px;
+}
+
+.schedule-cell {
+  width: 248px;
+}
+
+.skill-level-cell {
+  width: 191px;
+  align-items: stretch;
+}
+
+.skill-badge {
+  display: flex;
+  height: 32px;
+  min-width: 84px;
+  max-width: 480px;
+  padding: 0 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  background: #EBE8F2;
+  color: #120D1C;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+/* Instructor Grid */
+.instructor-grid {
+  display: flex;
+  padding: 16px;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.instructor-card {
+  display: flex;
+  min-width: 160px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+  border-radius: 8px;
+}
+
+.instructor-image {
+  height: 160px;
+  align-self: stretch;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.instructor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.instructor-name {
+  color: #120D1C;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 4px 0;
+  align-self: stretch;
+}
+
+.instructor-title {
+  color: #664F96;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  margin: 0;
+  align-self: stretch;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  background: #FAF7FC;
+}
+
+.footer-container {
+  display: flex;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+  padding: 40px 20px;
+  gap: 24px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  row-gap: 24px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  width: 160px;
+  min-width: 160px;
+  color: #664F96;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #664F96;
+}
+
+.social-icon:hover svg {
+  fill: #591AE5;
+}
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+}
+
+.copyright p {
+  color: #664F96;
+  text-align: center;
+  font-feature-settings: 'dlig' on;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 20px 80px;
+  }
+}
+
+/* Age Groups */
+.age-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px 16px;
+  align-self: stretch;
+  align-items: center;
+}
+
+.age-group-card {
+  background: linear-gradient(135deg, #FAF7FC 0%, #F0EAFF 100%);
+  border: 1px solid #D6D1E8;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.age-group-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(171, 139, 240, 0.15);
+}
+
+.age-group-title {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  margin: 0 0 12px 0;
+}
+
+.age-group-description {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+}
+
+/* Why Join Section */
+.why-join {
+  background: #FAF7FC;
+  border: 2px solid #AB8BF0;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px auto 0 auto;
+  text-align: center;
+  max-width: 600px;
+  width: fit-content;
+}
+
+.why-join-title {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  text-align: left;
+}
+
+.benefits-list li {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  margin: 0 0 8px 0;
+  padding-left: 8px;
+}
+
+.benefits-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Materials Grid */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 12px 16px;
+  align-self: stretch;
+}
+
+.material-item {
+  background: #FFF;
+  border: 1px solid #E5E8EB;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.material-item:hover {
+  border-color: #AB8BF0;
+}
+
+.material-item h4 {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0 0 8px 0;
+}
+
+.material-item p {
+  color: #664F96;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* Schedule Info */
+.schedule-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 12px 16px;
+  align-self: stretch;
+  justify-items: center;
+}
+
+.schedule-detail {
+  background: linear-gradient(135deg, #FAF7FC 0%, #F0EAFF 100%);
+  border: 1px solid #D6D1E8;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.schedule-detail h3 {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0 0 12px 0;
+}
+
+.schedule-detail p {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 0 8px 0;
+}
+
+.schedule-detail p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #AB8BF0 0%, #4f09d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 32px !important;
+}
+
+/* Pricing Info */
+.pricing-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 12px 16px;
+  align-self: stretch;
+}
+
+.price-card {
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(79, 9, 217, 0.25);
+}
+
+.price-card.special-promo {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+  color: white;
+  border: 3px solid #FFD700;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.price-card.regular {
+  background: linear-gradient(135deg, #4f09d9 0%, #AB8BF0 100%);
+  color: white;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4), 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  to {
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.6), 0 0 30px rgba(255, 215, 0, 0.5);
+  }
+}
+
+.price-card h3 {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0 0 16px 0;
+}
+
+.price-amount {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  margin: 0 0 16px 0;
+}
+
+.price-card p {
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 0 8px 0;
+  opacity: 0.9;
+}
+
+.price-options {
+  background: #FAF7FC;
+  border: 1px solid #D6D1E8;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.price-options h4 {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0 0 16px 0;
+}
+
+.price-options ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.price-options li {
+  color: #120D1C;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 12px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.price-options li:before {
+  content: "•";
+  color: #AB8BF0;
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.price-options li:last-child {
+  margin-bottom: 0;
+}
+
+/* Included Items */
+.included-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 12px 16px;
+  align-self: stretch;
+}
+
+.included-item {
+  background: #FFF;
+  border: 1px solid #E5E8EB;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.included-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(171, 139, 240, 0.15);
+  border-color: #AB8BF0;
+}
+
+.included-item h4 {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  margin: 0 0 8px 0;
+}
+
+.included-item p {
+  color: #664F96;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* Enrollment Info */
+.enrollment-info {
+  padding: 12px 16px;
+  align-self: stretch;
+}
+
+/* Contact Methods */
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.contact-item {
+  background: linear-gradient(135deg, #FAF7FC 0%, #F0EAFF 100%);
+  border: 1px solid #AB8BF0;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(171, 139, 240, 0.2);
+}
+
+.contact-item h4 {
+  color: #4f09d9;
+  font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0 0 12px 0;
+}
+
+.contact-item p {
+  margin: 0;
+}
+
+.contact-item a {
+  color: #4f09d9;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+  color: #AB8BF0;
+}
+
+.enrollment-info .section-content {
+  margin-bottom: 24px;
+}
+
+.enrollment-info .section-content:last-child {
+  margin-bottom: 0;
+}
+
+.enrollment-info a {
+  color: #4f09d9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.enrollment-info a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .navbar-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .navbar-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-content {
+    padding: 20px 40px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    line-height: 36px;
+    width: auto;
+    min-width: auto;
+  }
+
+  .instructor-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .instructor-card {
+    min-width: auto;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .table-header,
+  .table-row {
+    min-width: 600px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-link {
+    width: auto;
+    min-width: auto;
+  }
+
+  /* Responsive styles for Kids Art Program */
+  .age-groups {
+    padding: 12px 8px;
+  }
+  
+  .materials-grid {
+    grid-template-columns: 1fr;
+    padding: 12px 8px;
+  }
+  
+  .schedule-info {
+    grid-template-columns: 1fr;
+    padding: 12px 8px;
+  }
+  
+  .included-items {
+    grid-template-columns: 1fr;
+    padding: 12px 8px;
+  }
+  
+  .contact-methods {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .promotion-banner {
+    padding: 24px;
+    margin: 16px 0;
+  }
+  
+  .promotion-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  
+  .promotion-price {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .price-card {
+    padding: 24px;
+  }
+  
+  .price-amount {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .main-content {
+    padding: 20px 20px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+  
+  .nav-link {
+    font-size: 12px;
+  }
+
+  .brand-title {
+    font-size: 16px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .instructor-grid {
+    padding: 16px 8px;
+  }
+
+  /* Mobile responsive styles for Kids Art Program */
+  .age-group-card,
+  .schedule-detail,
+  .price-options {
+    padding: 16px;
+  }
+  
+  .material-item,
+  .included-item,
+  .contact-item {
+    padding: 16px;
+  }
+  
+  .why-join {
+    padding: 20px;
+  }
+  
+  .promotion-banner {
+    padding: 20px;
+    margin: 12px 0;
+  }
+  
+  .promotion-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  .promotion-price {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  
+  .price-card {
+    padding: 20px;
+  }
+  
+  .price-amount {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}

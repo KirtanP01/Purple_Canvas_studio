@@ -1,0 +1,39 @@
+{
+  "name": "purple_canvas_studio",
+  "version": "1.0.0",
+  "description": "A responsive website for Purple Canvas Studio built with Angular, Node.js, and PostgreSQL.",
+  "main": "src/main.ts",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "~20.1.3",
+    "@angular/core": "~20.1.3",
+    "@angular/forms": "~20.1.3",
+    "@angular/platform-browser": "~20.1.3",
+    "@angular/platform-browser-dynamic": "~20.1.3",
+    "@angular/router": "~20.1.3",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.7.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^20.1.3",
+    "@angular/cli": "^20.1.3",
+    "@angular/compiler": "~20.1.3",
+    "@angular/compiler-cli": "~20.1.3",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^22.0.0",
+    "typescript": "~5.8.0"
+  },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  }
+}
