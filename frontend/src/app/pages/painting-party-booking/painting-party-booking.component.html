@@ -1,0 +1,25 @@
+<div class="main-container">
+  <app-navbar></app-navbar>
+  <div class="booking-form-container">
+    <h2>Book a Painting Party</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label>Name</label>
+      <input [(ngModel)]="formData.name" name="name" required />
+      <label>Email</label>
+      <input [(ngModel)]="formData.email" name="email" required type="email" />
+      <label>Phone</label>
+      <input [(ngModel)]="formData.phone" name="phone" />
+  <label>Party Date</label>
+  <input [(ngModel)]="formData.date" name="date" required type="date" />
+      <label>Number of Guests</label>
+      <input [(ngModel)]="formData.number_of_guests" name="number_of_guests" required type="number" min="1" />
+      <label>Theme</label>
+      <input [(ngModel)]="formData.theme" name="theme" />
+      <label>Additional Notes</label>
+      <textarea [(ngModel)]="formData.additional_notes" name="additional_notes"></textarea>
+      <button type="submit" [disabled]="submitting">Submit Booking</button>
+    </form>
+    <div *ngIf="successMessage" style="color: green; margin-top: 16px;">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" style="color: red; margin-top: 16px;">{{ errorMessage }}</div>
+  </div>
+</div>

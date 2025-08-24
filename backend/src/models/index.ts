@@ -4,6 +4,8 @@ export interface User {
     id?: number;
     email: string;
     name: string;
+    password: string;
+    role: 'admin' | 'customer';
     phone?: string;
     created_at?: Date;
     updated_at?: Date;
@@ -33,11 +35,11 @@ export interface ContactMessage {
 export class UserModel {
     static async create(user: User): Promise<User> {
         const query = `
-            INSERT INTO users (email, name, phone)
-            VALUES ($1, $2, $3)
+            INSERT INTO users (email, name, password, role, phone)
+            VALUES ($1, $2, $3, $4, $5)
             RETURNING *;
         `;
-        const result = await pool.query(query, [user.email, user.name, user.phone]);
+        const result = await pool.query(query, [user.email, user.name, user.password, user.role, user.phone]);
         return result.rows[0];
     }
 
@@ -45,6 +47,12 @@ export class UserModel {
         const query = 'SELECT * FROM users WHERE email = $1';
         const result = await pool.query(query, [email]);
         return result.rows[0] || null;
+    }
+
+    static async findAll(): Promise<User[]> {
+        const query = 'SELECT * FROM users ORDER BY created_at DESC';
+        const result = await pool.query(query);
+        return result.rows;
     }
 
     static async findById(id: number): Promise<User | null> {

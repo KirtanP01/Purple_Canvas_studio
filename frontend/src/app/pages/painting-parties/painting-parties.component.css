@@ -182,6 +182,52 @@
   position: relative;
 }
 
+  .painting-parties-page {
+    font-family: 'Plus Jakarta Sans', -apple-system, Roboto, Helvetica, sans-serif;
+    display: flex;
+    min-height: 800px;
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #F8F4FF 0%, #E3D6FA 100%);
+    position: relative;
+  }
+
+  .main-content {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(79,9,217,0.08);
+  }
+
+  .page-header {
+    background: linear-gradient(90deg, #7B2FF2 0%, #A259F7 100%);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    color: #fff;
+    box-shadow: 0 2px 12px rgba(79,9,217,0.12);
+  }
+
+  .section-title {
+    color: #4f09d9;
+  }
+
+  .cta-section {
+    background: #F8F4FF;
+    border-left: 6px solid #A259F7;
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-top: 24px;
+    color: #4f09d9;
+  }
+
+  .included-section {
+    background: #E3D6FA;
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    color: #4f09d9;
+  }
+
 .container {
   display: flex;
   max-width: 960px;

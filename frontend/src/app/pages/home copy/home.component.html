@@ -125,59 +125,55 @@
       </div>
     </div>
 
+
     <!-- Activities Section -->
-    <div class="activities-header section-purple">
+    <div class="activities-section section-purple">
       <div class="activities-title">Activities</div>
-    </div>
-
-    <div class="activities-grid section-purple">
       <div class="activity-cards">
-            <!-- Painting Parties Card -->
-            <div class="activity-card" (click)="navigateToPaintingParties()">
-              <img class="activity-image" src="assets/activities-pictures/Painting-Parties.jpg" alt="Painting Parties" />
-              <div class="activity-content">
-                <div class="activity-info">
-                  <div class="activity-name">
-                    <a [routerLink]="['/painting-parties']" class="activity-link">Painting Parties</a>
-                  </div>
-                </div>
-                <div class="activity-description-container">
-                  <div class="activity-description">Host a vibrant painting party with friends, guided by our expert instructors.</div>
-                </div>
+        <!-- Painting Parties Card -->
+        <div class="activity-card" (click)="navigateToPaintingParties()">
+          <img class="activity-image" src="assets/activities-pictures/Painting-Parties.jpg" alt="Painting Parties" />
+          <div class="activity-content">
+            <div class="activity-info">
+              <div class="activity-name">
+                <a [routerLink]="['/painting-parties']" class="activity-link">Painting Parties</a>
               </div>
             </div>
-
-            <!-- Art Classes Card -->
-            <div class="activity-card" (click)="navigateToArtClasses()">
-              <img class="activity-image activity-image-third" src="assets/activities-pictures/Art-Classes.jpg" alt="Art Classes" />
-              <div class="activity-content">
-                <div class="activity-info">
-                  <div class="activity-name">
-                    <a [routerLink]="['/art-classes']" class="activity-link">Art Classes</a>
-                  </div>
-                </div>
-                <div class="activity-description-container">
-                  <div class="activity-description">Join our structured art classes to develop your skills and explore various techniques.</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Birthday Parties Card -->
-            <div class="activity-card" (click)="navigateToBirthdayParties()">
-              <img class="activity-image" src="assets/activities-pictures/Birthday-Parties.jpg" alt="Birthday Parties" />
-              <div class="activity-content">
-                <div class="activity-info">
-                  <div class="activity-name">
-                    <a [routerLink]="['/birthday-parties']" class="activity-link">Birthday Parties</a>
-                  </div>
-                </div>
-                <div class="activity-description-container">
-                  <div class="activity-description">Celebrate your special day with a creative art-themed birthday party.</div>
-                </div>
-              </div>
+            <div class="activity-description-container">
+              <div class="activity-description">Host a vibrant painting party with friends, guided by our expert instructors.</div>
             </div>
           </div>
         </div>
+        <!-- Art Classes Card -->
+        <div class="activity-card" (click)="navigateToArtClasses()">
+          <img class="activity-image activity-image-third" src="assets/activities-pictures/Art-Classes.jpg" alt="Art Classes" />
+          <div class="activity-content">
+            <div class="activity-info">
+              <div class="activity-name">
+                <a [routerLink]="['/art-classes']" class="activity-link">Art Classes</a>
+              </div>
+            </div>
+            <div class="activity-description-container">
+              <div class="activity-description">Join our structured art classes to develop your skills and explore various techniques.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Birthday Parties Card -->
+        <div class="activity-card" (click)="navigateToBirthdayParties()">
+          <img class="activity-image" src="assets/activities-pictures/Birthday-Parties.jpg" alt="Birthday Parties" />
+          <div class="activity-content">
+            <div class="activity-info">
+              <div class="activity-name">
+                <a [routerLink]="['/birthday-parties']" class="activity-link">Birthday Parties</a>
+              </div>
+            </div>
+            <div class="activity-description-container">
+              <div class="activity-description">Celebrate your special day with a creative art-themed birthday party.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Kids Artwork Showcase Section -->
     <div class="artwork-showcase-section section-white">

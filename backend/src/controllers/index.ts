@@ -24,10 +24,10 @@ export class IndexController {
 export class UserController {
     public async createUser(req: Request, res: Response) {
         try {
-            const { email, name, phone }: User = req.body;
+            const { email, name, password, role, phone }: User = req.body;
 
-            if (!email || !name) {
-                return res.status(400).json({ error: "Email and name are required" });
+            if (!email || !name || !password || !role) {
+                return res.status(400).json({ error: "Email, name, password, and role are required" });
             }
 
             // Check if user already exists
@@ -36,11 +36,50 @@ export class UserController {
                 return res.status(409).json({ error: "User with this email already exists" });
             }
 
-            const user = await UserModel.create({ email, name, phone });
+            // Hash password
+            const bcrypt = require('bcrypt');
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+            const user = await UserModel.create({ email, name, password: hashedPassword, role, phone });
             res.status(201).json({ message: "User created successfully", user });
         } catch (error) {
             console.error('Error creating user:', error);
             res.status(500).json({ error: "Failed to create user" });
+        }
+    }
+
+    public async login(req: Request, res: Response) {
+        try {
+            const { email, password } = req.body;
+            if (!email || !password) {
+                return res.status(400).json({ error: "Email and password are required" });
+            }
+            const user = await UserModel.findByEmail(email);
+            if (!user) {
+                return res.status(401).json({ error: "Invalid credentials" });
+            }
+            const bcrypt = require('bcrypt');
+            const valid = await bcrypt.compare(password, user.password);
+            if (!valid) {
+                return res.status(401).json({ error: "Invalid credentials" });
+            }
+            // For demo: return user info (in production, use JWT)
+            res.status(200).json({ message: "Login successful", user });
+        } catch (error) {
+            console.error('Error logging in:', error);
+            res.status(500).json({ error: "Failed to login" });
+        }
+    }
+
+    public async getAllUsers(req: Request, res: Response) {
+        try {
+            // In production, check admin role here
+            const users = await UserModel.findAll();
+            res.status(200).json({ users });
+        } catch (error) {
+            console.error('Error fetching users:', error);
+            res.status(500).json({ error: "Failed to fetch users" });
         }
     }
 
