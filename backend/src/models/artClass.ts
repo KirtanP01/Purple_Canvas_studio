@@ -11,24 +11,25 @@ export interface ArtClass {
     additional_notes?: string;
     status?: string;
     created_at?: Date;
+    age?: number;
 }
 
 export class ArtClassModel {
     static async create(data: ArtClass): Promise<ArtClass> {
         const query = `
-            INSERT INTO art_classes (name, email, phone, enroll_date, number_of_guests, class_level, additional_notes, status)
+            INSERT INTO art_classes (name, email, phone, class_level, additional_notes, status, enroll_date, age)
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING *;
         `;
         const result = await pool.query(query, [
-            data.name,
-            data.email,
-            data.phone,
-            data.enroll_date,
-            data.number_of_guests,
-            data.class_level,
-            data.additional_notes,
-            data.status || 'pending'
+            data.name || '',
+            data.email || '',
+            data.phone || '',
+            data.class_level || '',
+            data.additional_notes || '',
+            data.status || 'pending',
+            data.enroll_date ? new Date(data.enroll_date) : new Date(),
+            data.age || null
         ]);
         return result.rows[0];
     }

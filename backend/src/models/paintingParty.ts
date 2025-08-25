@@ -17,22 +17,33 @@ export interface PaintingParty {
 export class PaintingPartyModel {
     static async create(data: PaintingParty): Promise<PaintingParty> {
         const query = `
-            INSERT INTO painting_parties (name, email, phone, date, number_of_guests, package, theme, additional_notes, status)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            INSERT INTO painting_parties (name, email, phone, date, number_of_guests, theme, additional_notes, status)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING *;
         `;
-        const result = await pool.query(query, [
-            data.name,
-            data.email,
-            data.phone,
-            data.date,
-            data.number_of_guests,
-            data.package,
-            data.theme,
-            data.additional_notes,
+        // Ensure all fields are present and date is a Date object
+        const values = [
+            data.name || '',
+            data.email || '',
+            data.phone || '',
+            data.date ? new Date(data.date) : new Date(),
+            data.number_of_guests || 1,
+            data.theme || '',
+            data.additional_notes || '',
             data.status || 'pending'
-        ]);
-        return result.rows[0];
+        ];
+        console.log('Preparing to execute SQL for painting party:', query, values);
+        try {
+            const result = await pool.query(query, values);
+            console.log('SQL execution result:', result);
+            return result.rows[0];
+        } catch (error) {
+            console.error('Error in PaintingPartyModel.create:', error);
+            if (error instanceof Error) {
+                console.error(error.stack);
+            }
+            throw error;
+        }
     }
 
     static async findAll(): Promise<PaintingParty[]> {

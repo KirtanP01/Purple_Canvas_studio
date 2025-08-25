@@ -1,3 +1,4 @@
+console.log('Backend server starting: console.log test');
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';

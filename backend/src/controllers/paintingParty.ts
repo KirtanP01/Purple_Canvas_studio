@@ -4,14 +4,21 @@ import { PaintingPartyModel } from '../models/paintingParty';
 export class PaintingPartyController {
     async create(req: Request, res: Response) {
         try {
+            console.log('Received POST /api/painting-parties request with body:', req.body);
             const party = await PaintingPartyModel.create(req.body);
             res.status(201).json(party);
         } catch (error) {
-            res.status(500).json({ error: 'Failed to create painting party', details: error });
+            console.error('Error in create:', error);
+            if (error instanceof Error) {
+                console.error(error.stack);
+            }
+            const details = error instanceof Error ? error.message : String(error);
+            res.status(500).json({ error: 'Failed to create painting party', details });
         }
     }
 
     async getAll(req: Request, res: Response) {
+    console.log('Received GET /api/painting-parties request');
         try {
             const parties = await PaintingPartyModel.findAll();
             res.json(parties);

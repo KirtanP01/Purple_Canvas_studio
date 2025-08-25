@@ -5,7 +5,7 @@ export interface BirthdayParty {
     name: string;
     email: string;
     phone?: string;
-    party_date: Date;
+    date: Date;
     number_of_guests: number;
     package?: string;
     theme?: string;
@@ -17,19 +17,18 @@ export interface BirthdayParty {
 export class BirthdayPartyModel {
     static async create(data: BirthdayParty): Promise<BirthdayParty> {
         const query = `
-            INSERT INTO birthday_parties (name, email, phone, party_date, number_of_guests, package, theme, additional_notes, status)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            INSERT INTO birthday_parties (name, email, phone, date, number_of_guests, theme, additional_notes, status)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING *;
         `;
         const result = await pool.query(query, [
-            data.name,
-            data.email,
-            data.phone,
-            data.party_date,
-            data.number_of_guests,
-            data.package,
-            data.theme,
-            data.additional_notes,
+            data.name || '',
+            data.email || '',
+            data.phone || '',
+            data.date ? new Date(data.date) : new Date(),
+            data.number_of_guests || 1,
+            data.theme || '',
+            data.additional_notes || '',
             data.status || 'pending'
         ]);
         return result.rows[0];
