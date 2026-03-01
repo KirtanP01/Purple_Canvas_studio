@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { PaintingPartyModel } from '../models/paintingParty';
+import { PaintingPartyModel } from '../models/paintingParty.js';
 
 export class PaintingPartyController {
     async create(req: Request, res: Response) {
@@ -74,6 +74,25 @@ export class PaintingPartyController {
                 }
                 const details = error instanceof Error ? error.message : String(error);
                 res.status(500).json({ error: 'Failed to delete painting party', details });
+        }
+    }
+
+    async updatePayment(req: Request, res: Response) {
+        try {
+            const { paypalOrderId, paypalCaptureId, paymentAmount } = req.body;
+            const party = await PaintingPartyModel.update(Number(req.params.id), {
+                payment_status: 'completed',
+                paypal_order_id: paypalOrderId,
+                paypal_capture_id: paypalCaptureId,
+                payment_amount: paymentAmount,
+                payment_date: new Date(),
+                status: 'confirmed'
+            });
+            if (!party) return res.status(404).json({ error: 'Booking not found' });
+            res.json(party);
+        } catch (error) {
+            console.error('PaintingPartyController.updatePayment error:', error);
+            res.status(500).json({ error: 'Failed to update payment', details: error });
         }
     }
 }

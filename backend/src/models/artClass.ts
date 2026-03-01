@@ -1,36 +1,48 @@
-import { pool } from '../db/index';
+import { pool } from '../db/index.js';
 
 export interface ArtClass {
     id?: number;
-    name: string;
+    parent_name: string;
     email: string;
-    phone?: string;
-    enroll_date: Date;
-    number_of_guests: number;
-    class_level?: string;
-    additional_notes?: string;
+    phone: string;
+    child_name: string;
+    child_age: number;
+    preferred_day: string;
+    preferred_time: string;
+    session_type: string;
+    special_requests?: string;
     status?: string;
     created_at?: Date;
-    age?: number;
+    payment_status?: string;
+    payment_amount?: number;
+    paypal_order_id?: string;
+    paypal_capture_id?: string;
+    payment_date?: Date;
 }
 
 export class ArtClassModel {
-    static async create(data: ArtClass): Promise<ArtClass> {
+    static async create(data: any): Promise<ArtClass> {
         const query = `
-            INSERT INTO art_classes (name, email, phone, class_level, additional_notes, status, enroll_date, age)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            INSERT INTO art_classes (
+                parent_name, email, phone, child_name, child_age,
+                preferred_day, preferred_time, session_type, special_requests, status
+            )
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
             RETURNING *;
         `;
-        const result = await pool.query(query, [
-            data.name || '',
+        const values = [
+            data.parentName || '',
             data.email || '',
             data.phone || '',
-            data.class_level || '',
-            data.additional_notes || '',
-            data.status || 'pending',
-            data.enroll_date ? new Date(data.enroll_date) : new Date(),
-            data.age || null
-        ]);
+            data.childName || data.studentName || '',
+            data.childAge || data.studentAge || 8,
+            data.preferredDay || '',
+            data.preferredTime || '',
+            data.sessionType || data.classType || '',
+            data.specialRequests || null,
+            data.status || 'pending'
+        ];
+        const result = await pool.query(query, values);
         return result.rows[0];
     }
 

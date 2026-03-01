@@ -2,10 +2,11 @@
   "name": "purple_canvas_studio_backend",
   "version": "1.0.0",
   "description": "Backend for Purple Canvas Studio using Node.js, Express, and PostgreSQL.",
+  "type": "module",
   "main": "src/app.ts",
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "dev": "nodemon src/app.ts",
+    "start": "node --loader ts-node/esm src/app.ts",
+    "dev": "nodemon --exec node --loader ts-node/esm src/app.ts",
     "build": "tsc",
     "test": "jest"
   },

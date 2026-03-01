@@ -1,37 +1,58 @@
-import { pool } from '../db/index';
+import { pool } from '../db/index.js';
 
 export interface PaintingParty {
     id?: number;
-    name: string;
+    parent_name: string;
     email: string;
-    phone?: string;
-    date: Date;
-    number_of_guests: number;
-    package?: string;
-    theme?: string;
-    additional_notes?: string;
+    phone: string;
+    party_date: string;
+    party_time: string;
+    guest_count: number;
+    child_age: string;
+    theme: string;
+    custom_theme?: string;
+    venue_address: string;
+    city: string;
+    zip_code: string;
+    special_requests?: string;
     status?: string;
     created_at?: Date;
+    payment_status?: string;
+    payment_amount?: number;
+    paypal_order_id?: string;
+    paypal_capture_id?: string;
+    payment_date?: Date;
 }
 
 export class PaintingPartyModel {
-    static async create(data: PaintingParty): Promise<PaintingParty> {
+    static async create(data: any): Promise<PaintingParty> {
         const query = `
-            INSERT INTO painting_parties (name, email, phone, date, number_of_guests, theme, additional_notes, status)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            INSERT INTO painting_parties (
+                parent_name, email, phone, party_date, party_time, 
+                guest_count, child_age, theme, custom_theme, 
+                venue_address, city, zip_code, special_requests, status
+            )
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
             RETURNING *;
         `;
-        // Ensure all fields are present and date is a Date object
+        
         const values = [
-            data.name || '',
+            data.parentName || '',
             data.email || '',
             data.phone || '',
-            data.date ? new Date(data.date) : new Date(),
-            data.number_of_guests || 1,
+            data.partyDate || new Date().toISOString().split('T')[0],
+            data.partyTime || '00:00',
+            data.guestCount || 6,
+            data.childAge || '',
             data.theme || '',
-            data.additional_notes || '',
+            data.customTheme || null,
+            data.venueAddress || '',
+            data.city || '',
+            data.zipCode || '',
+            data.specialRequests || null,
             data.status || 'pending'
         ];
+        
         console.log('Preparing to execute SQL for painting party:', query, values);
         try {
             const result = await pool.query(query, values);

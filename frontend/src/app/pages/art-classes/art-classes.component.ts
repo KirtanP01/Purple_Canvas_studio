@@ -23,6 +23,10 @@ export class ArtClassesComponent implements OnInit {
     console.log('Enroll Now clicked');
   }
 
+  navigateToBooking() {
+    this.router.navigate(['/book-art-class']);
+  }
+
   navigateToHome() {
     this.router.navigate(['/home']);
   }

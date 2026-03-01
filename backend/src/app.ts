@@ -5,8 +5,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import { setRoutes } from './routes/index';
-import { connectDB } from './db/index';
+import { setRoutes } from './routes/index.js';
+import { connectDB } from './db/index.js';
 
 // Load environment variables
 dotenv.config();

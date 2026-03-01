@@ -3,13 +3,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// Determine SSL setting: use SSL only if in production AND not using localhost
+const useSSL = process.env.NODE_ENV === 'production' && 
+               process.env.DB_HOST !== 'localhost' && 
+               process.env.DB_HOST !== '127.0.0.1';
+
 const pool = new Pool({
     user: process.env.DB_USER || 'postgres',
     host: process.env.DB_HOST || 'localhost',
     database: process.env.DB_NAME || 'purple_canvas_studio',
     password: process.env.DB_PASSWORD || '',
     port: parseInt(process.env.DB_PORT || '5432'),
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+    ssl: useSSL ? { rejectUnauthorized: false } : false,
 });
 
 const connectDB = async () => {
@@ -72,6 +77,70 @@ const initializeTables = async () => {
                 email VARCHAR(255) NOT NULL,
                 subject VARCHAR(255),
                 message TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
+        // Create art_classes table
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS art_classes (
+                id SERIAL PRIMARY KEY,
+                parent_name VARCHAR(100) NOT NULL,
+                email VARCHAR(100) NOT NULL,
+                phone VARCHAR(20) NOT NULL,
+                student_name VARCHAR(100) NOT NULL,
+                student_age INTEGER NOT NULL,
+                enroll_date DATE NOT NULL,
+                class_type VARCHAR(50) NOT NULL,
+                preferred_day VARCHAR(50) NOT NULL,
+                special_requests TEXT,
+                status VARCHAR(20) DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
+        // Create painting_parties table
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS painting_parties (
+                id SERIAL PRIMARY KEY,
+                parent_name VARCHAR(100) NOT NULL,
+                email VARCHAR(100) NOT NULL,
+                phone VARCHAR(20) NOT NULL,
+                party_date DATE NOT NULL,
+                party_time VARCHAR(20) NOT NULL,
+                guest_count INTEGER NOT NULL,
+                child_age INTEGER NOT NULL,
+                theme VARCHAR(100) NOT NULL,
+                custom_theme VARCHAR(200),
+                venue_address VARCHAR(200) NOT NULL,
+                city VARCHAR(100) NOT NULL,
+                zip_code VARCHAR(10) NOT NULL,
+                special_requests TEXT,
+                status VARCHAR(20) DEFAULT 'pending',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
+        // Create birthday_parties table
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS birthday_parties (
+                id SERIAL PRIMARY KEY,
+                parent_name VARCHAR(100) NOT NULL,
+                email VARCHAR(100) NOT NULL,
+                phone VARCHAR(20) NOT NULL,
+                child_name VARCHAR(100) NOT NULL,
+                child_age INTEGER NOT NULL,
+                party_date DATE NOT NULL,
+                party_time VARCHAR(20) NOT NULL,
+                guest_count INTEGER NOT NULL,
+                package VARCHAR(50) NOT NULL,
+                theme VARCHAR(100) NOT NULL,
+                custom_theme VARCHAR(200),
+                venue_address VARCHAR(200) NOT NULL,
+                city VARCHAR(100) NOT NULL,
+                zip_code VARCHAR(10) NOT NULL,
+                special_requests TEXT,
+                status VARCHAR(20) DEFAULT 'pending',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { BirthdayPartyModel } from '../models/birthdayParty';
+import { BirthdayPartyModel } from '../models/birthdayParty.js';
 
 export class BirthdayPartyController {
     async create(req: Request, res: Response) {
@@ -47,6 +47,25 @@ export class BirthdayPartyController {
             res.json({ success: true });
         } catch (error) {
             res.status(500).json({ error: 'Failed to delete birthday party', details: error });
+        }
+    }
+
+    async updatePayment(req: Request, res: Response) {
+        try {
+            const { paypalOrderId, paypalCaptureId, paymentAmount } = req.body;
+            const party = await BirthdayPartyModel.update(Number(req.params.id), {
+                payment_status: 'completed',
+                paypal_order_id: paypalOrderId,
+                paypal_capture_id: paypalCaptureId,
+                payment_amount: paymentAmount,
+                payment_date: new Date(),
+                status: 'confirmed'
+            });
+            if (!party) return res.status(404).json({ error: 'Booking not found' });
+            res.json(party);
+        } catch (error) {
+            console.error('BirthdayPartyController.updatePayment error:', error);
+            res.status(500).json({ error: 'Failed to update payment', details: error });
         }
     }
 }

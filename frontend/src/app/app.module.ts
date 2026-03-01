@@ -12,10 +12,13 @@ import { ContactComponent } from './pages/contact/contact';
 import { PaintingPartiesComponent } from './pages/painting-parties/painting-parties.component';
 import { BirthdayPartiesComponent } from './pages/birthday-parties/birthday-parties.component';
 import { ArtClassesComponent } from './pages/art-classes/art-classes.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
 // Removed missing SignUpComponent import
 import { BirthdayPartyBookingComponent } from './pages/birthday-party-booking/birthday-party-booking.component';
 import { PaintingPartyBookingComponent } from './pages/painting-party-booking/painting-party-booking.component';
 import { ArtClassBookingComponent } from './pages/art-class-booking/art-class-booking.component';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { ArtClassBookingComponent } from './pages/art-class-booking/art-class-bo
     PaintingPartiesComponent,
     BirthdayPartiesComponent,
     ArtClassesComponent,
-  // Removed missing SignUpComponent from declarations
+    ActivitiesComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,

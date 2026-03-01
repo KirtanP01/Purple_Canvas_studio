@@ -1,0 +1,94 @@
+<div class="main-container">
+  <!-- Header/Navbar Section -->
+  <div class="header-section">
+    <header class="navbar">
+      <div class="navbar-content">
+        <div class="logo-brand-container">
+          <img class="logo-image" src="https://api.builder.io/api/v1/image/assets/TEMP/0f439a1807bf5abeb1404f1ca96e255adfe63e71?width=114" alt="Purple Canvas Studio Logo" />
+          
+          <div class="navbar-brand">
+            <a [routerLink]="['/']" class="brand-title">
+              <span class="brand-purple">Purple</span>
+              <span class="brand-space"> </span>
+              <span class="brand-canvas">Canvas</span>
+              <span class="brand-space"> </span>
+              <span class="brand-studio">Studio</span>
+              <span class="brand-space"> </span>
+              <span class="brand-LCC">LCC</span>
+            </a>
+          </div>
+        </div>
+
+        <nav class="navbar-nav">
+          <div class="nav-links">
+            <a [routerLink]="['/']" class="nav-link">Home</a>
+            <a [routerLink]="['/activities']" class="nav-link">Activities</a>
+            <a href="http://purplecanvasshop.s3-website-us-east-1.amazonaws.com/" target="_blank" class="nav-link">Shop</a>
+            <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
+            <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
+            <a [routerLink]="['/about']" class="nav-link">About</a>
+            <a [routerLink]="['/contact']" class="nav-link">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Activities Section -->
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="activities-header">
+          <div class="activities-title">Activities</div>
+        </div>
+
+        <div class="activities-grid">
+          <div class="activity-cards">
+            <!-- Painting Parties Card -->
+            <div class="activity-card" (click)="navigateToPaintingParties()">
+              <img class="activity-image" src="assets/activities-pictures/Painting-Parties.jpg" alt="Painting Parties" />
+              <div class="activity-content">
+                <div class="activity-info">
+                  <div class="activity-name">
+                    <a [routerLink]="['/painting-parties']" class="activity-link">Painting Parties</a>
+                  </div>
+                </div>
+                <div class="activity-description-container">
+                  <div class="activity-description">Host a vibrant painting party with friends, guided by our expert instructors.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Art Classes Card -->
+            <div class="activity-card" (click)="navigateToArtClasses()">
+              <img class="activity-image activity-image-third" src="assets/activities-pictures/Art-Classes.jpg" alt="Art Classes" />
+              <div class="activity-content">
+                <div class="activity-info">
+                  <div class="activity-name">
+                    <a [routerLink]="['/art-classes']" class="activity-link">Art Classes</a>
+                  </div>
+                </div>
+                <div class="activity-description-container">
+                  <div class="activity-description">Join our structured art classes to develop your skills and explore various techniques.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Birthday Parties Card -->
+            <div class="activity-card" (click)="navigateToBirthdayParties()">
+              <img class="activity-image" src="assets/activities-pictures/Birthday-Parties.jpg" alt="Birthday Parties" />
+              <div class="activity-content">
+                <div class="activity-info">
+                  <div class="activity-name">
+                    <a [routerLink]="['/birthday-parties']" class="activity-link">Birthday Parties</a>
+                  </div>
+                </div>
+                <div class="activity-description-container">
+                  <div class="activity-description">Celebrate your special day with a creative art-themed birthday party.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
