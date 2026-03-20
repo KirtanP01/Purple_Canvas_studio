@@ -12,9 +12,11 @@ export class AdminDashboardComponent implements OnInit {
   paintingParties: any[] = [];
   birthdayParties: any[] = [];
   artClasses: any[] = [];
+  pendingReviews: any[] = [];
   isLoading = true;
   errorMessage = '';
   activeTab = 'all';
+  reviewActionInProgress: Record<number, boolean> = {};
 
   constructor(
     private adminAuthService: AdminAuthService,
@@ -23,6 +25,7 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAllBookings();
+    this.loadPendingReviews();
   }
 
   loadAllBookings(): void {
@@ -48,6 +51,79 @@ export class AdminDashboardComponent implements OnInit {
 
   setActiveTab(tab: string): void {
     this.activeTab = tab;
+  }
+
+  loadPendingReviews(): void {
+    this.adminAuthService.getPendingReviews().subscribe({
+      next: (reviews: any[]) => {
+        this.pendingReviews = reviews || [];
+      },
+      error: (error) => {
+        if (error.status === 401) {
+          this.logout();
+          return;
+        }
+        console.error('Failed to load pending reviews:', error);
+      }
+    });
+  }
+
+  approveReview(id: number): void {
+    this.reviewActionInProgress[id] = true;
+    this.adminAuthService.approveReview(id).subscribe({
+      next: () => {
+        this.pendingReviews = this.pendingReviews.filter((review) => review.id !== id);
+        this.reviewActionInProgress[id] = false;
+      },
+      error: (error) => {
+        this.reviewActionInProgress[id] = false;
+        if (error.status === 401) {
+          this.logout();
+          return;
+        }
+        alert('Failed to approve review. Please try again.');
+      }
+    });
+  }
+
+  rejectReview(id: number): void {
+    this.reviewActionInProgress[id] = true;
+    this.adminAuthService.rejectReview(id).subscribe({
+      next: () => {
+        this.pendingReviews = this.pendingReviews.filter((review) => review.id !== id);
+        this.reviewActionInProgress[id] = false;
+      },
+      error: (error) => {
+        this.reviewActionInProgress[id] = false;
+        if (error.status === 401) {
+          this.logout();
+          return;
+        }
+        alert('Failed to reject review. Please try again.');
+      }
+    });
+  }
+
+  deleteReview(id: number): void {
+    if (!confirm('Delete this review permanently?')) {
+      return;
+    }
+
+    this.reviewActionInProgress[id] = true;
+    this.adminAuthService.deleteReview(id).subscribe({
+      next: () => {
+        this.pendingReviews = this.pendingReviews.filter((review) => review.id !== id);
+        this.reviewActionInProgress[id] = false;
+      },
+      error: (error) => {
+        this.reviewActionInProgress[id] = false;
+        if (error.status === 401) {
+          this.logout();
+          return;
+        }
+        alert('Failed to delete review. Please try again.');
+      }
+    });
   }
 
   getTotalBookings(): number {
@@ -78,6 +154,24 @@ export class AdminDashboardComponent implements OnInit {
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
+    });
+  }
+
+  getArtClassTime(artClass: any): string {
+    const notes = artClass?.special_requests;
+    if (!notes || typeof notes !== 'string') return 'N/A';
+
+    const match = notes.match(/Preferred time:\s*([^|]+)/i);
+    return match?.[1]?.trim() || 'N/A';
+  }
+
+  formatShortDate(dateString: string): string {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
     });
   }
 }

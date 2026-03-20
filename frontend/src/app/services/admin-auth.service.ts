@@ -84,4 +84,20 @@ export class AdminAuthService {
   getArtClassBookings(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/admin/art-classes`, { headers: this.getAuthHeaders() });
   }
+
+  getPendingReviews(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/admin/reviews/pending`, { headers: this.getAuthHeaders() });
+  }
+
+  approveReview(id: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/admin/reviews/${id}/approve`, {}, { headers: this.getAuthHeaders() });
+  }
+
+  rejectReview(id: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/admin/reviews/${id}/reject`, {}, { headers: this.getAuthHeaders() });
+  }
+
+  deleteReview(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/admin/reviews/${id}`, { headers: this.getAuthHeaders() });
+  }
 }

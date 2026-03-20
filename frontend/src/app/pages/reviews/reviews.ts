@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ReviewsService, ReviewDto } from '../../services/reviews.service';
 
 interface Review {
   id: number;
+  email?: string;
   name: string;
   rating: number;
   comment: string;
@@ -34,10 +36,37 @@ export class Reviews implements OnInit {
   // Form submission state
   submissionMessage = '';
   showSubmissionForm = false;
+  isLoading = true;
+  loadError = '';
+
+  constructor(private reviewsService: ReviewsService) {}
 
   ngOnInit() {
-    // Sort reviews by date (newest first)
-    this.approvedReviews.sort((a, b) => b.date.getTime() - a.date.getTime());
+    this.fetchApprovedReviews();
+  }
+
+  fetchApprovedReviews() {
+    this.isLoading = true;
+    this.loadError = '';
+    this.reviewsService.getApprovedReviews().subscribe({
+      next: (reviews: ReviewDto[]) => {
+        this.approvedReviews = reviews.map((review) => ({
+          id: review.id,
+          name: review.name,
+          email: review.email,
+          rating: review.rating,
+          comment: review.comment,
+          date: new Date(review.approved_at || review.created_at),
+          approved: review.status === 'approved'
+        }));
+        this.approvedReviews.sort((a, b) => b.date.getTime() - a.date.getTime());
+        this.isLoading = false;
+      },
+      error: () => {
+        this.loadError = 'Could not load reviews right now. Please try again shortly.';
+        this.isLoading = false;
+      }
+    });
   }
 
   // Generate star rating array for display
@@ -56,17 +85,21 @@ export class Reviews implements OnInit {
   // Submit new review
   submitReview() {
     if (this.validateForm()) {
-      // In a real application, you would send this to a backend service
-      console.log('Review submitted:', this.newReview);
-      
-      this.submissionMessage = 'Thank you for your review! We\'ll review it and publish it soon.';
-      this.resetForm();
-      this.showSubmissionForm = false;
-      
-      // Clear message after 5 seconds
-      setTimeout(() => {
-        this.submissionMessage = '';
-      }, 5000);
+      this.reviewsService.submitReview(this.newReview).subscribe({
+        next: () => {
+          this.submissionMessage = 'Thank you for your review! We\'ll review it and publish it soon.';
+          this.resetForm();
+          this.showSubmissionForm = false;
+
+          setTimeout(() => {
+            this.submissionMessage = '';
+          }, 5000);
+        },
+        error: (error) => {
+          const message = error?.error?.error || 'Failed to submit review. Please try again.';
+          alert(message);
+        }
+      });
     }
   }
 

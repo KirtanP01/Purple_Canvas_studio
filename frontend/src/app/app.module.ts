@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { PaintingPartyBookingComponent } from './pages/painting-party-booking/pa
 import { ArtClassBookingComponent } from './pages/art-class-booking/art-class-booking.component';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,11 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
   imports: [
     BrowserModule,
     CommonModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
+    NavbarComponent,
     BirthdayPartyBookingComponent,
     PaintingPartyBookingComponent,
     ArtClassBookingComponent

@@ -178,6 +178,38 @@ tbody tr:hover {
   font-style: italic;
 }
 
+.review-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.review-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.review-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.review-btn.approve {
+  background-color: #2d9d5b;
+}
+
+.review-btn.reject {
+  background-color: #c77d18;
+}
+
+.review-btn.delete {
+  background-color: #c0392b;
+}
+
 @media (max-width: 768px) {
   .dashboard-header {
     flex-direction: column;

@@ -81,6 +81,21 @@ const initializeTables = async () => {
             );
         `);
 
+        // Create reviews table
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS reviews (
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(120) NOT NULL,
+                email VARCHAR(255) NOT NULL,
+                rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+                comment TEXT NOT NULL,
+                status VARCHAR(20) NOT NULL DEFAULT 'pending',
+                approved_at TIMESTAMP,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
         // Create art_classes table
         await pool.query(`
             CREATE TABLE IF NOT EXISTS art_classes (
@@ -95,6 +110,11 @@ const initializeTables = async () => {
                 preferred_day VARCHAR(50) NOT NULL,
                 special_requests TEXT,
                 status VARCHAR(20) DEFAULT 'pending',
+                payment_status VARCHAR(20) DEFAULT 'pending',
+                payment_amount NUMERIC(10,2),
+                paypal_order_id VARCHAR(100),
+                paypal_capture_id VARCHAR(100),
+                payment_date TIMESTAMP,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
@@ -117,6 +137,11 @@ const initializeTables = async () => {
                 zip_code VARCHAR(10) NOT NULL,
                 special_requests TEXT,
                 status VARCHAR(20) DEFAULT 'pending',
+                payment_status VARCHAR(20) DEFAULT 'pending',
+                payment_amount NUMERIC(10,2),
+                paypal_order_id VARCHAR(100),
+                paypal_capture_id VARCHAR(100),
+                payment_date TIMESTAMP,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
@@ -161,8 +186,48 @@ const initializeTables = async () => {
                 zip_code VARCHAR(10) NOT NULL,
                 special_requests TEXT,
                 status VARCHAR(20) DEFAULT 'pending',
+                payment_status VARCHAR(20) DEFAULT 'pending',
+                payment_amount NUMERIC(10,2),
+                paypal_order_id VARCHAR(100),
+                paypal_capture_id VARCHAR(100),
+                payment_date TIMESTAMP,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
+        `);
+
+        // Backfill payment columns when tables already existed before payment tracking was added.
+        await pool.query(`
+            ALTER TABLE art_classes
+            ADD COLUMN IF NOT EXISTS payment_status VARCHAR(20) DEFAULT 'pending',
+            ADD COLUMN IF NOT EXISTS payment_amount NUMERIC(10,2),
+            ADD COLUMN IF NOT EXISTS paypal_order_id VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS paypal_capture_id VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS payment_date TIMESTAMP;
+        `);
+
+        await pool.query(`
+            ALTER TABLE painting_parties
+            ADD COLUMN IF NOT EXISTS payment_status VARCHAR(20) DEFAULT 'pending',
+            ADD COLUMN IF NOT EXISTS payment_amount NUMERIC(10,2),
+            ADD COLUMN IF NOT EXISTS paypal_order_id VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS paypal_capture_id VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS payment_date TIMESTAMP;
+        `);
+
+        await pool.query(`
+            ALTER TABLE birthday_parties
+            ADD COLUMN IF NOT EXISTS payment_status VARCHAR(20) DEFAULT 'pending',
+            ADD COLUMN IF NOT EXISTS payment_amount NUMERIC(10,2),
+            ADD COLUMN IF NOT EXISTS paypal_order_id VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS paypal_capture_id VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS payment_date TIMESTAMP;
+        `);
+
+        await pool.query(`
+            ALTER TABLE reviews
+            ADD COLUMN IF NOT EXISTS status VARCHAR(20) NOT NULL DEFAULT 'pending',
+            ADD COLUMN IF NOT EXISTS approved_at TIMESTAMP,
+            ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
         `);
 
         console.log('📋 Database tables initialized successfully');

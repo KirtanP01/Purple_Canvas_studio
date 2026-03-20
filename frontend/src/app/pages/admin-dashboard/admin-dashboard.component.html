@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="admin-dashboard">
   <header class="dashboard-header">
     <h1>Admin Dashboard</h1>
@@ -21,6 +23,10 @@
       <h3>Art Classes</h3>
       <p class="stat-number">{{ artClasses.length }}</p>
     </div>
+    <div class="stat-card">
+      <h3>Pending Reviews</h3>
+      <p class="stat-number">{{ pendingReviews.length }}</p>
+    </div>
   </div>
 
   <div class="tabs">
@@ -43,6 +49,11 @@
       [class.active]="activeTab === 'classes'" 
       (click)="setActiveTab('classes')">
       Art Classes
+    </button>
+    <button 
+      [class.active]="activeTab === 'reviews'" 
+      (click)="setActiveTab('reviews')">
+      Reviews
     </button>
   </div>
 
@@ -75,11 +86,11 @@
           <tbody>
             <tr *ngFor="let party of paintingParties">
               <td>{{ party.parent_name }}</td>
-              <td>{{ party.parent_email }}</td>
-              <td>{{ party.parent_phone }}</td>
+              <td>{{ party.email }}</td>
+              <td>{{ party.phone }}</td>
               <td>{{ formatDate(party.party_date) }}</td>
               <td>{{ party.party_time }}</td>
-              <td>{{ party.number_of_children }}</td>
+              <td>{{ party.guest_count }}</td>
               <td>
                 <span class="status-badge" [class.status-paid]="party.payment_status === 'completed'">
                   {{ party.payment_status || 'Pending' }}
@@ -113,11 +124,11 @@
           <tbody>
             <tr *ngFor="let party of birthdayParties">
               <td>{{ party.parent_name }}</td>
-              <td>{{ party.parent_email }}</td>
-              <td>{{ party.parent_phone }}</td>
+              <td>{{ party.email }}</td>
+              <td>{{ party.phone }}</td>
               <td>{{ formatDate(party.party_date) }}</td>
               <td>{{ party.party_time }}</td>
-              <td>{{ party.number_of_children }}</td>
+              <td>{{ party.guest_count }}</td>
               <td>
                 <span class="status-badge" [class.status-paid]="party.payment_status === 'completed'">
                   {{ party.payment_status || 'Pending' }}
@@ -152,10 +163,10 @@
             <tr *ngFor="let artClass of artClasses">
               <td>{{ artClass.student_name }}</td>
               <td>{{ artClass.parent_name }}</td>
-              <td>{{ artClass.parent_email }}</td>
-              <td>{{ artClass.parent_phone }}</td>
-              <td>{{ formatDate(artClass.class_date) }}</td>
-              <td>{{ artClass.class_time }}</td>
+              <td>{{ artClass.email }}</td>
+              <td>{{ artClass.phone }}</td>
+              <td>{{ formatDate(artClass.enroll_date) }}</td>
+              <td>{{ getArtClassTime(artClass) }}</td>
               <td>
                 <span class="status-badge" [class.status-paid]="artClass.payment_status === 'completed'">
                   {{ artClass.payment_status || 'Pending' }}
@@ -166,6 +177,57 @@
           </tbody>
         </table>
         <p class="no-data" *ngIf="artClasses.length === 0">No art class bookings yet.</p>
+      </div>
+    </div>
+
+    <!-- Reviews Moderation -->
+    <div class="booking-section" *ngIf="activeTab === 'reviews'">
+      <h2>Pending Reviews ({{ pendingReviews.length }})</h2>
+      <div class="table-responsive">
+        <table *ngIf="pendingReviews.length > 0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Rating</th>
+              <th>Comment</th>
+              <th>Submitted</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let review of pendingReviews">
+              <td>{{ review.name }}</td>
+              <td>{{ review.email }}</td>
+              <td>{{ review.rating }} / 5</td>
+              <td>{{ review.comment }}</td>
+              <td>{{ formatShortDate(review.created_at) }}</td>
+              <td>
+                <div class="review-actions">
+                  <button
+                    class="review-btn approve"
+                    (click)="approveReview(review.id)"
+                    [disabled]="reviewActionInProgress[review.id]">
+                    Approve
+                  </button>
+                  <button
+                    class="review-btn reject"
+                    (click)="rejectReview(review.id)"
+                    [disabled]="reviewActionInProgress[review.id]">
+                    Reject
+                  </button>
+                  <button
+                    class="review-btn delete"
+                    (click)="deleteReview(review.id)"
+                    [disabled]="reviewActionInProgress[review.id]">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="no-data" *ngIf="pendingReviews.length === 0">No pending reviews.</p>
       </div>
     </div>
   </div>

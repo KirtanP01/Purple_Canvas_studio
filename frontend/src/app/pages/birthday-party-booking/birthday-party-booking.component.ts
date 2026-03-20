@@ -22,6 +22,7 @@ export class BirthdayPartyBookingComponent implements OnInit {
   bookingId: number | null = null;
   bookingData: any = null;
   depositAmount = BOOKING_PRICES.birthdayParty;
+  selectedPackage = '';
   private document = inject(DOCUMENT);
   private readonly PAYPAL_CLIENT_ID = environment.paypalClientId;
 
@@ -51,6 +52,11 @@ export class BirthdayPartyBookingComponent implements OnInit {
   onSubmitSignup(form: NgForm) {
     if (form.valid) {
       const formData = form.value;
+      this.depositAmount = this.getPackagePrice(formData.package);
+      if (this.depositAmount <= 0) {
+        alert('Please select a valid package.');
+        return;
+      }
       this.bookingData = formData;
       console.log('Birthday Party Booking:', formData);
       
@@ -125,5 +131,18 @@ export class BirthdayPartyBookingComponent implements OnInit {
         this.showPayPal = false;
       }
     }).render('#paypal-button-container');
+  }
+
+  onPackageChange(packageType: string): void {
+    this.selectedPackage = packageType;
+    this.depositAmount = this.getPackagePrice(packageType);
+  }
+
+  private getPackagePrice(packageType: string): number {
+    const packagePrices = BOOKING_PRICES.birthdayPartyPackages;
+    if (!packageType || !(packageType in packagePrices)) {
+      return BOOKING_PRICES.birthdayParty;
+    }
+    return packagePrices[packageType as keyof typeof packagePrices];
   }
 }

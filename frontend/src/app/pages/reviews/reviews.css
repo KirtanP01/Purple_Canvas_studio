@@ -241,6 +241,12 @@
   font-weight: 500;
 }
 
+.submission-message.error-message {
+  background: #f8d7da;
+  color: #842029;
+  border-color: #f5c2c7;
+}
+
 /* Review Form */
 .review-form-container {
   background: white;

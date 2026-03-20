@@ -122,7 +122,15 @@
   </div>
 
   <!-- Reviews Display -->
-  <div class="reviews-list">
+  <div *ngIf="isLoading" class="empty-reviews">
+    <h3>Loading reviews...</h3>
+  </div>
+
+  <div *ngIf="!isLoading && loadError" class="submission-message error-message">
+    {{ loadError }}
+  </div>
+
+  <div class="reviews-list" *ngIf="!isLoading && !loadError">
     <div *ngFor="let review of approvedReviews" class="review-card">
       <div class="review-header">
         <div class="reviewer-info">
@@ -146,7 +154,7 @@
   </div>
 
   <!-- Empty State -->
-  <div *ngIf="approvedReviews.length === 0" class="empty-reviews">
+  <div *ngIf="!isLoading && !loadError && approvedReviews.length === 0" class="empty-reviews">
     <h3>No reviews yet</h3>
     <p>Be the first to share your experience with Purple Canvas Studio!</p>
     <button class="write-first-review-btn" (click)="toggleSubmissionForm()">Write the First Review</button>

@@ -18,6 +18,11 @@ export interface BirthdayParty {
     zip_code: string;
     special_requests?: string;
     status?: string;
+    payment_status?: string;
+    payment_amount?: number;
+    paypal_order_id?: string;
+    paypal_capture_id?: string;
+    payment_date?: Date;
     created_at?: Date;
 }
 

@@ -66,7 +66,7 @@
                 
                 <div class="form-group">
                   <label for="package">Package Type *</label>
-                  <select id="package" name="package" ngModel required>
+                  <select id="package" name="package" [(ngModel)]="selectedPackage" (ngModelChange)="onPackageChange($event)" required>
                     <option value="">Select package</option>
                     <option value="basic">Basic Package ($250 - 8 kids)</option>
                     <option value="deluxe">Deluxe Package ($350 - 12 kids)</option>

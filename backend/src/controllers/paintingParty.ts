@@ -84,19 +84,16 @@ export class PaintingPartyController {
             const existing = await PaintingPartyModel.findById(id);
             if (!existing) return res.status(404).json({ error: 'Booking not found' });
 
-            const paymentNotes: string[] = [];
-            if (paypalOrderId) paymentNotes.push(`PayPal order: ${paypalOrderId}`);
-            if (paypalCaptureId) paymentNotes.push(`PayPal capture: ${paypalCaptureId}`);
-            if (typeof paymentAmount === 'number') paymentNotes.push(`Amount: $${paymentAmount}`);
-
-            const existingNotes = existing.special_requests ? `${existing.special_requests} | ` : '';
-            const mergedNotes = paymentNotes.length > 0
-                ? `${existingNotes}Payment completed (${paymentNotes.join(', ')})`
-                : existing.special_requests;
+            const numericAmount = Number(paymentAmount);
+            const normalizedAmount = Number.isFinite(numericAmount) ? numericAmount : undefined;
 
             const party = await PaintingPartyModel.update(id, {
                 status: 'confirmed',
-                special_requests: mergedNotes
+                payment_status: 'completed',
+                payment_amount: normalizedAmount,
+                paypal_order_id: paypalOrderId,
+                paypal_capture_id: paypalCaptureId,
+                payment_date: new Date()
             });
 
             res.json(party);

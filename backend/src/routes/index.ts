@@ -12,6 +12,7 @@ import { BirthdayPartyController } from '../controllers/birthdayParty.js';
 import { PaintingPartyController } from '../controllers/paintingParty.js';
 import { ArtClassController } from '../controllers/artClass.js';
 import { PaymentController } from '../controllers/payment.js';
+import { ReviewController } from '../controllers/review.js';
 import * as AdminController from '../controllers/admin.js';
 import { authenticateAdmin } from '../middleware/auth.js';
 
@@ -21,6 +22,7 @@ const birthdayPartyController = new BirthdayPartyController();
 const paintingPartyController = new PaintingPartyController();
 const artClassController = new ArtClassController();
 const paymentController = new PaymentController();
+const reviewController = new ReviewController();
 const userController = new UserController();
 const bookingController = new BookingController();
 const contactController = new ContactController();
@@ -60,10 +62,18 @@ export function setRoutes(app: Express) {
     router.post('/payments/capture-order', paymentController.captureOrder.bind(paymentController));
     router.get('/payments/order/:orderID', paymentController.getOrder.bind(paymentController));
 
+    // Reviews (public)
+    router.get('/reviews', reviewController.getApproved.bind(reviewController));
+    router.post('/reviews', reviewController.create.bind(reviewController));
+
     // Admin routes
     router.post('/admin/login', AdminController.login);
     router.get('/admin/bookings', authenticateAdmin, AdminController.getAllBookings);
     router.get('/admin/painting-parties', authenticateAdmin, AdminController.getPaintingPartyBookings);
     router.get('/admin/birthday-parties', authenticateAdmin, AdminController.getBirthdayPartyBookings);
     router.get('/admin/art-classes', authenticateAdmin, AdminController.getArtClassBookings);
+    router.get('/admin/reviews/pending', authenticateAdmin, reviewController.getPending.bind(reviewController));
+    router.post('/admin/reviews/:id/approve', authenticateAdmin, reviewController.approve.bind(reviewController));
+    router.post('/admin/reviews/:id/reject', authenticateAdmin, reviewController.reject.bind(reviewController));
+    router.delete('/admin/reviews/:id', authenticateAdmin, reviewController.remove.bind(reviewController));
 }
