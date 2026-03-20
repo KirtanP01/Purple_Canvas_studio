@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { PaintingPartyModel } from '../models/paintingParty';
+import { PaintingPartyModel } from '../models/paintingParty.js';
 
 export class PaintingPartyController {
     async create(req: Request, res: Response) {
@@ -74,6 +74,35 @@ export class PaintingPartyController {
                 }
                 const details = error instanceof Error ? error.message : String(error);
                 res.status(500).json({ error: 'Failed to delete painting party', details });
+        }
+    }
+
+    async updatePayment(req: Request, res: Response) {
+        try {
+            const { paypalOrderId, paypalCaptureId, paymentAmount } = req.body;
+            const id = Number(req.params.id);
+            const existing = await PaintingPartyModel.findById(id);
+            if (!existing) return res.status(404).json({ error: 'Booking not found' });
+
+            const paymentNotes: string[] = [];
+            if (paypalOrderId) paymentNotes.push(`PayPal order: ${paypalOrderId}`);
+            if (paypalCaptureId) paymentNotes.push(`PayPal capture: ${paypalCaptureId}`);
+            if (typeof paymentAmount === 'number') paymentNotes.push(`Amount: $${paymentAmount}`);
+
+            const existingNotes = existing.special_requests ? `${existing.special_requests} | ` : '';
+            const mergedNotes = paymentNotes.length > 0
+                ? `${existingNotes}Payment completed (${paymentNotes.join(', ')})`
+                : existing.special_requests;
+
+            const party = await PaintingPartyModel.update(id, {
+                status: 'confirmed',
+                special_requests: mergedNotes
+            });
+
+            res.json(party);
+        } catch (error) {
+            console.error('PaintingPartyController.updatePayment error:', error);
+            res.status(500).json({ error: 'Failed to update payment', details: error });
         }
     }
 }

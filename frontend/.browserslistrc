@@ -1,0 +1,8 @@
+# Browsers that need to be supported by the build output.
+# Adjust versions based on your actual user devices if needed.
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
+Safari >= 13
+iOS >= 13

@@ -7,12 +7,17 @@ import { ContactComponent } from './pages/contact/contact';
 import { PaintingPartiesComponent } from './pages/painting-parties/painting-parties.component';
 import { BirthdayPartiesComponent } from './pages/birthday-parties/birthday-parties.component';
 import { ArtClassesComponent } from './pages/art-classes/art-classes.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
+import { SignUpComponent } from './pages/sign-up copy/sign-up.component';
 // Removed missing SignUpComponent import
-import { Gallery } from './pages/gallery/gallery';
+import { Gallery } from './pages/gallery copy/gallery';
 import { Reviews } from './pages/reviews/reviews';
 import { BirthdayPartyBookingComponent } from './pages/birthday-party-booking/birthday-party-booking.component';
 import { PaintingPartyBookingComponent } from './pages/painting-party-booking/painting-party-booking.component';
 import { ArtClassBookingComponent } from './pages/art-class-booking/art-class-booking.component';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,17 +28,23 @@ const routes: Routes = [
   { path: 'painting-parties', component: PaintingPartiesComponent },
   { path: 'birthday-parties', component: BirthdayPartiesComponent },
   { path: 'art-classes', component: ArtClassesComponent },
+  { path: 'activities', component: ActivitiesComponent },
+  { path: 'sign-up', component: SignUpComponent },
   // Removed missing SignUpComponent route
   { path: 'gallery', component: Gallery },
   { path: 'reviews', component: Reviews },
   { path: 'book-birthday-party', loadComponent: () => import('./pages/birthday-party-booking/birthday-party-booking.component').then(m => m.BirthdayPartyBookingComponent) },
   { path: 'book-painting-party', loadComponent: () => import('./pages/painting-party-booking/painting-party-booking.component').then(m => m.PaintingPartyBookingComponent) },
-  { path: 'book-art-class', loadComponent: () => import('./pages/art-class-booking/art-class-booking.component').then(m => m.ArtClassBookingComponent) }
+  { path: 'book-art-class', loadComponent: () => import('./pages/art-class-booking/art-class-booking.component').then(m => m.ArtClassBookingComponent) },
+  { path: 'admin/login', component: AdminLoginComponent },
+  { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'top'
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    scrollOffset: [0, 0]
   })],
   exports: [RouterModule]
 })

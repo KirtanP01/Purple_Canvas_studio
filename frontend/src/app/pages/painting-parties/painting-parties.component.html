@@ -1,10 +1,11 @@
 <div class="painting-parties-page">
-  <!-- Navigation Header -->
-  <div class="header-section">
+  <div class="page-container">
+    <!-- Header -->
     <header class="navbar">
       <div class="navbar-content">
         <div class="logo-brand-container">
           <img class="logo-image" src="https://api.builder.io/api/v1/image/assets/TEMP/0f439a1807bf5abeb1404f1ca96e255adfe63e71?width=114" alt="Purple Canvas Studio Logo" />
+          
           <div class="navbar-brand">
             <a [routerLink]="['/']" class="brand-title">
               <span class="brand-purple">Purple</span>
@@ -17,9 +18,11 @@
             </a>
           </div>
         </div>
+
         <nav class="navbar-nav">
           <div class="nav-links">
-            <a href="#" class="nav-link">Activities</a>
+            <a [routerLink]="['/']" class="nav-link">Home</a>
+            <a [routerLink]="['/activities']" class="nav-link">Activities</a>
             <a href="http://purplecanvasshop.s3-website-us-east-1.amazonaws.com/" target="_blank" class="nav-link">Shop</a>
             <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
             <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
@@ -29,61 +32,240 @@
         </nav>
       </div>
     </header>
-  </div>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="container">
-      <!-- Page Title -->
-      <div class="page-header">
-        <h1 class="page-title">🎨 Creative Painting Parties for Kids</h1>
-      </div>
-
-      <!-- Hero Description -->
-      <section class="hero-description">
-        <p class="hero-text">
-          We’re excited to organize a fun-filled Painting Party for your special day!
-        </p>
-        <p class="hero-text">
-          As discussed, here are the party details:
-        </p>
-      </section>
-
-      <!-- What's Included Section -->
-      <section class="included-section">
-        <h2 class="section-title">What's Included</h2>
-        <div class="included-container">
-          <ul class="included-list">
-            <li><strong>🎉 Pricing:</strong> $25 per child</li>
-            <li><strong>Setup Fee:</strong> $75 flat fee for setup, cleanup, and transportation</li>
-            <li>All Painting Party materials, aprons for each child, and setup/cleanup included</li>
-          </ul>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-container">
+        <!-- Page Title -->
+        <div class="page-header">
+          <div class="decorative-paint-splash"></div>
+          <h1 class="page-title">🎨 Creative Painting Parties 🎉</h1>
+          <p class="page-subtitle">✨ Unforgettable Art Celebrations for Kids! ✨</p>
+          <div class="decorative-brushstroke"></div>
         </div>
-      </section>
 
-      <!-- Party Description -->
-      <section class="party-description">
-        <p class="description-text">
-          You simply set up the tables and chairs with tablecloths—we’ll take care of the rest! The 90-minute party will be filled with creativity, fun, and non-stop entertainment for the kids.
-        </p>
-      </section>
+        <!-- Party Overview -->
+        <section class="section overview-section">
+          <div class="section-icon">🎨</div>
+          <h2 class="section-title">✨ Make Your Celebration Extraordinary ✨</h2>
+          <div class="highlight-box">
+            <p class="section-content">
+              Turn your child's special day into an unforgettable artistic adventure! Our painting parties bring the fun, creativity, and excitement directly to your venue. With professional instruction, all materials included, and complete setup/cleanup service, you can relax and enjoy the celebration while we handle all the artistic details. Perfect for birthdays, special occasions, and group celebrations!
+            </p>
+          </div>
+          <div class="paint-palette-decoration">
+            <span class="palette-dot" style="background: #FF6B9D;"></span>
+            <span class="palette-dot" style="background: #FFA94D;"></span>
+            <span class="palette-dot" style="background: #FFE66D;"></span>
+            <span class="palette-dot" style="background: #4ECDC4;"></span>
+            <span class="palette-dot" style="background: #C77DFF;"></span>
+          </div>
+        </section>
 
-      <!-- Call to Action -->
-      <section class="cta-section">
-        <h2 class="cta-title">📅 To confirm your booking, a $100 deposit is required.</h2>
-        <p>👉 Please reply to this message with:</p>
-        <ul>
-          <li>✔ Party date</li>
-          <li>✔ Time</li>
-          <li>✔ Number of kids</li>
-          <li>✔ And send the deposit to secure your party slot.</li>
-        </ul>
-      </section>
+        <!-- Party Packages -->
+        <section class="section pricing-section">
+          <div class="section-icon">💰</div>
+          <h2 class="section-title">🎨 Party Packages & Pricing 🎈</h2>
+          <div class="pricing-info">
+            <div class="price-card featured-card">
+              <div class="card-ribbon">🌟 Popular 🌟</div>
+              <div class="card-icon">🎨</div>
+              <h3>Standard Party Package</h3>
+              <div class="price-amount">$25</div>
+              <p class="price-per">per child</p>
+              <div class="price-divider"></div>
+              <div class="package-details">
+                <p><strong>Plus Setup Fee:</strong> $75</p>
+                <p class="package-note">✓ Setup, cleanup, transportation & instruction</p>
+              </div>
+            </div>
+            
+            <div class="price-card special-promo sparkle-card">
+              <div class="card-icon">✨</div>
+              <h3>What Makes Us Special</h3>
+              <div class="benefits-list">
+                <p><span class="benefit-icon">🎨</span> 90 minutes of creative fun</p>
+                <p><span class="benefit-icon">👩‍🎨</span> Professional art instruction</p>
+                <p><span class="benefit-icon">🎒</span> All materials & aprons provided</p>
+                <p><span class="benefit-icon">✨</span> Complete setup & cleanup</p>
+                <p><span class="benefit-icon">🖼️</span> Kids take home their masterpieces!</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <!-- Contact Information -->
-      <section class="contact-section">
-        <p class="description-text">We look forward to making your celebration unforgettable! 💜</p>
-      </section>
-    </div>
-  </main>
+        <!-- What's Included -->
+        <section class="section included-section">
+          <div class="section-icon">📦</div>
+          <h2 class="section-title">🎁 Everything You Need, Nothing You Don't 🎁</h2>
+          <div class="included-items">
+            <div class="included-item">
+              <h4>🎨 Complete Art Supplies</h4>
+              <p>Premium paints, brushes, canvases, and all specialty materials for the chosen project</p>
+            </div>
+            <div class="included-item">
+              <h4>👕 Protective Aprons</h4>
+              <p>Child-sized aprons for every participant to keep clothes clean and paint-free</p>
+            </div>
+            <div class="included-item">
+              <h4>👩‍🎨 Expert Instruction</h4>
+              <p>Experienced art educators guide kids through each step with patience and enthusiasm</p>
+            </div>
+            <div class="included-item">
+              <h4>✨ Setup & Cleanup</h4>
+              <p>We arrive early to set up and stay after to clean—you just provide tables, chairs & tablecloths!</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Party Themes -->
+        <section class="section themes-section">
+          <div class="section-icon">🎪</div>
+          <h2 class="section-title">🎨 Popular Party Themes 🌈</h2>
+          <p class="section-subtitle">Choose from our favorite themes or create your own!</p>
+          <div class="age-groups">
+            <div class="age-group-card">
+              <h3 class="age-group-title">🌈 Rainbow & Unicorns</h3>
+              <p class="age-group-description">
+                Magical paintings featuring rainbows, unicorns, and sparkly skies. Perfect for dreamers and fantasy lovers ages 5-10!
+              </p>
+            </div>
+            
+            <div class="age-group-card">
+              <h3 class="age-group-title">🐾 Animal Kingdom</h3>
+              <p class="age-group-description">
+                Paint adorable animals, jungle scenes, or ocean creatures. Great for animal enthusiasts of all ages!
+              </p>
+            </div>
+            
+            <div class="age-group-card">
+              <h3 class="age-group-title">🌟 Custom Themes</h3>
+              <p class="age-group-description">
+                Have a specific theme in mind? We can create custom painting projects for superheroes, princesses, sports, space, and more!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section timeline-section">
+          <div class="section-icon">📋</div>
+          <h2 class="section-title">🎉 How Your Party Works 🎊</h2>
+          <div class="timeline-decoration"></div>
+          <div class="schedule-info">
+            <div class="schedule-detail">
+              <h3>Before the Party</h3>
+              <p><strong>You set up:</strong> Tables and chairs with tablecloths</p>
+              <p><strong>We bring:</strong> All art supplies, aprons, and materials</p>
+              <p><strong>Choose:</strong> Your painting theme and party time</p>
+            </div>
+            
+            <div class="schedule-detail">
+              <h3>During the Party (90 min)</h3>
+              <p>🎨 <strong>Introduction</strong> (10 min): Welcome & apron distribution</p>
+              <p>🖌️ <strong>Painting Time</strong> (60 min): Step-by-step guided creation</p>
+              <p>✨ <strong>Finishing Touches</strong> (20 min): Final details & drying</p>
+            </div>
+            
+            <div class="schedule-detail">
+              <h3>After the Party</h3>
+              <p>📦 Kids take home their artwork</p>
+              <p>🧹 We handle all cleanup</p>
+              <p>💜 You enjoy the memories!</p>
+              <p><em>No stress, just creativity!</em></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Booking Requirements -->
+        <section class="section booking-section">
+          <div class="section-icon">📅</div>
+          <h2 class="section-title">📝 Booking Information 📋</h2>
+          <div class="enrollment-info">
+            <div class="section-content">
+              <h3>📅 Reservation Requirements</h3>
+              <p><strong>Deposit:</strong> $100 required to secure your party date</p>
+              <p><strong>Minimum Guests:</strong> 6 children recommended</p>
+              <p><strong>Maximum Capacity:</strong> Up to 20 kids (larger groups available upon request)</p>
+              <p><strong>Booking Timeline:</strong> Reserve at least 2 weeks in advance for best availability</p>
+            </div>
+            
+            <div class="section-content">
+              <h3>📝 What We Need From You</h3>
+              <div class="benefits-list">
+                <p>✓ Party date and time</p>
+                <p>✓ Number of children attending</p>
+                <p>✓ Age range of participants</p>
+                <p>✓ Preferred painting theme</p>
+                <p>✓ Party venue address</p>
+                <p>✓ $100 deposit to confirm booking</p>
+              </div>
+            </div>
+            
+            <div class="section-content">
+              <h3>🏠 Venue Requirements</h3>
+              <p><strong>You provide:</strong></p>
+              <div class="benefits-list">
+                <p>✓ Tables and chairs for all participants</p>
+                <p>✓ Tablecloths or protective covering</p>
+                <p>✓ Well-lit indoor space</p>
+                <p>✓ Access to running water nearby (preferred)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Booking CTA Section -->
+        <section class="section booking-cta-section">
+          <div class="cta-decoration">
+            <span class="star">⭐</span>
+            <span class="star">✨</span>
+            <span class="star">🌟</span>
+          </div>
+          <h2 class="section-title">🎉 Ready to Book Your Party? 🎨</h2>
+          <p class="section-subtitle">Click below to fill out our reservation form and secure your painting party date!</p>
+          <button class="book-party-btn" (click)="navigateToBooking()">
+            🎨 Book Your Painting Party Now! 🎉
+          </button>
+          <p class="cta-note">💜 We'll contact you within 24 hours to confirm your party details!</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact-cta-section">
+          <div class="cta-decoration">
+            <span class="star">⭐</span>
+            <span class="star">✨</span>
+            <span class="star">🌟</span>
+          </div>
+          <h2 class="section-title cta-title">💬 Questions? Contact Us! 📞</h2>
+          <div class="enrollment-info">
+            <p class="section-content" style="text-align: center; font-size: 18px; margin-bottom: 24px; font-weight: 600;">
+              🎈 Prefer to talk? We're here to help! 🎈
+            </p>
+            
+            <div class="contact-methods">
+              <div class="contact-item">
+                <h4>📞 Call/Text</h4>
+                <p><a href="tel:+12245395188">(224) 539-5188</a></p>
+              </div>
+              
+              <div class="contact-item">
+                <h4>📧 Email</h4>
+                <p><a href="mailto:purplecanvas.studio25@gmail.com">purplecanvas.studio25@gmail.com</a></p>
+              </div>
+              
+              <div class="contact-item">
+                <h4>📱 Instagram</h4>
+                <p><a href="https://instagram.com/purplecanvasstudio" target="_blank">@purplecanvasstudio</a></p>
+              </div>
+            </div>
+            
+            <p class="section-content" style="text-align: center; margin-top: 32px;">
+              <strong>We look forward to making your celebration unforgettable! 💜</strong>
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
 </div>

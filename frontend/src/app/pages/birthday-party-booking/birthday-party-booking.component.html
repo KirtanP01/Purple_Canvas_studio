@@ -1,25 +1,150 @@
-<div class="main-container">
+<div class="birthday-party-booking-page">
   <app-navbar></app-navbar>
-  <div class="booking-form-container">
-    <h2>Book a Birthday Party</h2>
-    <form (ngSubmit)="onSubmit()">
-      <label>Name</label>
-      <input [(ngModel)]="formData.name" name="name" required />
-      <label>Email</label>
-      <input [(ngModel)]="formData.email" name="email" required type="email" />
-      <label>Phone</label>
-      <input [(ngModel)]="formData.phone" name="phone" />
-      <label>Party Date</label>
-      <input [(ngModel)]="formData.party_date" name="party_date" required type="date" />
-      <label>Number of Guests</label>
-      <input [(ngModel)]="formData.number_of_guests" name="number_of_guests" required type="number" min="1" />
-      <label>Theme</label>
-      <input [(ngModel)]="formData.theme" name="theme" />
-      <label>Additional Notes</label>
-      <textarea [(ngModel)]="formData.additional_notes" name="additional_notes"></textarea>
-      <button type="submit" [disabled]="submitting">Submit Booking</button>
-    </form>
-    <div *ngIf="successMessage" style="color: green; margin-top: 16px;">{{ successMessage }}</div>
-    <div *ngIf="errorMessage" style="color: red; margin-top: 16px;">{{ errorMessage }}</div>
+  
+  <div class="page-container">
+    <main class="main-content">
+      <div class="content-container">
+        
+        <section class="section signup-form-section">
+          <div class="section-icon">🎂</div>
+          <h2 class="section-title">🎉 Book Your Birthday Party 🎈</h2>
+          <p class="section-subtitle">Fill out the form below and we'll get back to you within 24 hours!</p>
+          
+          <form class="party-signup-form" #signupForm="ngForm" (ngSubmit)="onSubmitSignup(signupForm)" *ngIf="!showPayPal">
+            <div class="form-grid">
+              
+              <div class="form-section">
+                <h3 class="form-section-title">📋 Your Information</h3>
+                
+                <div class="form-group">
+                  <label for="parentName">Parent/Guardian Name *</label>
+                  <input type="text" id="parentName" name="parentName" ngModel required placeholder="Your full name">
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" ngModel required placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" ngModel required placeholder="(224) 539-5188">
+                </div>
+              </div>
+              
+              <div class="form-section">
+                <h3 class="form-section-title">🎂 Party Details</h3>
+                
+                <div class="form-group">
+                  <label for="childName">Birthday Child's Name *</label>
+                  <input type="text" id="childName" name="childName" ngModel required placeholder="Child's name">
+                </div>
+                
+                <div class="form-group">
+                  <label for="childAge">Child's Age *</label>
+                  <input type="number" id="childAge" name="childAge" ngModel required min="1" max="18" placeholder="Age">
+                </div>
+                
+                <div class="form-group">
+                  <label for="partyDate">Party Date *</label>
+                  <input type="date" id="partyDate" name="partyDate" ngModel required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="partyTime">Party Time *</label>
+                  <input type="time" id="partyTime" name="partyTime" ngModel required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="guestCount">Number of Children *</label>
+                  <input type="number" id="guestCount" name="guestCount" ngModel required min="8" max="25" placeholder="8-25 kids">
+                </div>
+              </div>
+              
+              <div class="form-section full-width">
+                <h3 class="form-section-title">🎈 Party Theme & Package</h3>
+                
+                <div class="form-group">
+                  <label for="package">Package Type *</label>
+                  <select id="package" name="package" ngModel required>
+                    <option value="">Select package</option>
+                    <option value="basic">Basic Package ($250 - 8 kids)</option>
+                    <option value="deluxe">Deluxe Package ($350 - 12 kids)</option>
+                    <option value="premium">Premium Package ($450 - 16 kids)</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="theme">Party Theme *</label>
+                  <select id="theme" name="theme" ngModel required>
+                    <option value="">Select a theme</option>
+                    <option value="unicorns">🦄 Unicorns & Rainbows</option>
+                    <option value="superheroes">🦸 Superheroes</option>
+                    <option value="princesses">👑 Princesses</option>
+                    <option value="sports">⚽ Sports</option>
+                    <option value="animals">🐾 Animals</option>
+                    <option value="space">🚀 Space Adventure</option>
+                    <option value="custom">✨ Custom Theme</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="customTheme">Custom Theme Details (if applicable)</label>
+                  <input type="text" id="customTheme" name="customTheme" ngModel placeholder="Describe your custom theme">
+                </div>
+              </div>
+              
+              <div class="form-section full-width">
+                <h3 class="form-section-title">📍 Venue Information</h3>
+                
+                <div class="form-group">
+                  <label for="venueAddress">Party Address *</label>
+                  <input type="text" id="venueAddress" name="venueAddress" ngModel required placeholder="Street address">
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city">City *</label>
+                    <input type="text" id="city" name="city" ngModel required placeholder="City">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="zipCode">ZIP Code *</label>
+                    <input type="text" id="zipCode" name="zipCode" ngModel required placeholder="60000">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="specialRequests">Special Requests or Questions</label>
+                  <textarea id="specialRequests" name="specialRequests" ngModel rows="4" placeholder="Allergies, dietary restrictions, or special needs?"></textarea>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-footer">
+              <p class="deposit-info">💜 Deposit: ${{ depositAmount }} (Pay securely with PayPal)</p>
+              <button type="submit" class="submit-btn" [disabled]="!signupForm.valid">
+                🎂 Continue to Payment 💳
+              </button>
+              <p class="form-note">You'll be prompted to pay securely via PayPal after submitting!</p>
+            </div>
+          </form>
+
+          <!-- PayPal Payment Section -->
+          <div class="payment-section" *ngIf="showPayPal">
+            <div class="payment-container">
+              <h3 class="payment-title">💳 Complete Your Payment</h3>
+              <p class="payment-subtitle">Party Deposit: ${{ depositAmount }}</p>
+              <p class="payment-info">Please complete your payment using PayPal to confirm your party booking.</p>
+              
+              <div id="paypal-button-container"></div>
+              
+              <p class="payment-note">Your booking has been created. Complete payment to confirm your party date!</p>
+            </div>
+          </div>
+        </section>
+        
+      </div>
+    </main>
   </div>
 </div>

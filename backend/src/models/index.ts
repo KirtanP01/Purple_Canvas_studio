@@ -1,4 +1,4 @@
-import { pool } from '../db/index';
+import { pool } from '../db/index.js';
 
 export interface User {
     id?: number;

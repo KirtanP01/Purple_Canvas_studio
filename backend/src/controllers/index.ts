@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UserModel, BookingModel, ContactMessageModel, User, Booking, ContactMessage } from '../models/index';
+import { UserModel, BookingModel, ContactMessageModel, User, Booking, ContactMessage } from '../models/index.js';
 
 export class IndexController {
     public async getExample(req: Request, res: Response) {

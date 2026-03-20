@@ -1,0 +1,1 @@
+{"ast":null,"code":"// Booking pricing configuration\nexport const BOOKING_PRICES = {\n  artClass: 50.00,\n  birthdayParty: 150.00,\n  // Base deposit amount\n  paintingParty: 100.00 // Base deposit amount\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

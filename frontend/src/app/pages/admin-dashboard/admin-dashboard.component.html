@@ -1,0 +1,172 @@
+<div class="admin-dashboard">
+  <header class="dashboard-header">
+    <h1>Admin Dashboard</h1>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </header>
+
+  <div class="dashboard-stats">
+    <div class="stat-card">
+      <h3>Total Bookings</h3>
+      <p class="stat-number">{{ getTotalBookings() }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>Painting Parties</h3>
+      <p class="stat-number">{{ paintingParties.length }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>Birthday Parties</h3>
+      <p class="stat-number">{{ birthdayParties.length }}</p>
+    </div>
+    <div class="stat-card">
+      <h3>Art Classes</h3>
+      <p class="stat-number">{{ artClasses.length }}</p>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button 
+      [class.active]="activeTab === 'all'" 
+      (click)="setActiveTab('all')">
+      All Bookings
+    </button>
+    <button 
+      [class.active]="activeTab === 'painting'" 
+      (click)="setActiveTab('painting')">
+      Painting Parties
+    </button>
+    <button 
+      [class.active]="activeTab === 'birthday'" 
+      (click)="setActiveTab('birthday')">
+      Birthday Parties
+    </button>
+    <button 
+      [class.active]="activeTab === 'classes'" 
+      (click)="setActiveTab('classes')">
+      Art Classes
+    </button>
+  </div>
+
+  <div class="loading-container" *ngIf="isLoading">
+    <p>Loading bookings...</p>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="bookings-container" *ngIf="!isLoading && !errorMessage">
+    <!-- Painting Parties -->
+    <div class="booking-section" *ngIf="activeTab === 'all' || activeTab === 'painting'">
+      <h2>Painting Parties ({{ paintingParties.length }})</h2>
+      <div class="table-responsive">
+        <table *ngIf="paintingParties.length > 0">
+          <thead>
+            <tr>
+              <th>Parent Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Party Date</th>
+              <th>Party Time</th>
+              <th>Children</th>
+              <th>Payment Status</th>
+              <th>Booked On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let party of paintingParties">
+              <td>{{ party.parent_name }}</td>
+              <td>{{ party.parent_email }}</td>
+              <td>{{ party.parent_phone }}</td>
+              <td>{{ formatDate(party.party_date) }}</td>
+              <td>{{ party.party_time }}</td>
+              <td>{{ party.number_of_children }}</td>
+              <td>
+                <span class="status-badge" [class.status-paid]="party.payment_status === 'completed'">
+                  {{ party.payment_status || 'Pending' }}
+                </span>
+              </td>
+              <td>{{ formatDateTime(party.created_at) }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="no-data" *ngIf="paintingParties.length === 0">No painting party bookings yet.</p>
+      </div>
+    </div>
+
+    <!-- Birthday Parties -->
+    <div class="booking-section" *ngIf="activeTab === 'all' || activeTab === 'birthday'">
+      <h2>Birthday Parties ({{ birthdayParties.length }})</h2>
+      <div class="table-responsive">
+        <table *ngIf="birthdayParties.length > 0">
+          <thead>
+            <tr>
+              <th>Parent Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Party Date</th>
+              <th>Party Time</th>
+              <th>Children</th>
+              <th>Payment Status</th>
+              <th>Booked On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let party of birthdayParties">
+              <td>{{ party.parent_name }}</td>
+              <td>{{ party.parent_email }}</td>
+              <td>{{ party.parent_phone }}</td>
+              <td>{{ formatDate(party.party_date) }}</td>
+              <td>{{ party.party_time }}</td>
+              <td>{{ party.number_of_children }}</td>
+              <td>
+                <span class="status-badge" [class.status-paid]="party.payment_status === 'completed'">
+                  {{ party.payment_status || 'Pending' }}
+                </span>
+              </td>
+              <td>{{ formatDateTime(party.created_at) }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="no-data" *ngIf="birthdayParties.length === 0">No birthday party bookings yet.</p>
+      </div>
+    </div>
+
+    <!-- Art Classes -->
+    <div class="booking-section" *ngIf="activeTab === 'all' || activeTab === 'classes'">
+      <h2>Art Classes ({{ artClasses.length }})</h2>
+      <div class="table-responsive">
+        <table *ngIf="artClasses.length > 0">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Parent Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Class Date</th>
+              <th>Class Time</th>
+              <th>Payment Status</th>
+              <th>Booked On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let artClass of artClasses">
+              <td>{{ artClass.student_name }}</td>
+              <td>{{ artClass.parent_name }}</td>
+              <td>{{ artClass.parent_email }}</td>
+              <td>{{ artClass.parent_phone }}</td>
+              <td>{{ formatDate(artClass.class_date) }}</td>
+              <td>{{ artClass.class_time }}</td>
+              <td>
+                <span class="status-badge" [class.status-paid]="artClass.payment_status === 'completed'">
+                  {{ artClass.payment_status || 'Pending' }}
+                </span>
+              </td>
+              <td>{{ formatDateTime(artClass.created_at) }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="no-data" *ngIf="artClasses.length === 0">No art class bookings yet.</p>
+      </div>
+    </div>
+  </div>
+</div>

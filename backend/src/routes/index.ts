@@ -1,5 +1,5 @@
 
-import paypalClient from '../paypalClient';
+import paypalClient from '../paypalClient.js';
 import checkoutNodeJssdk from '@paypal/checkout-server-sdk';
 import { Router, Express } from 'express';
 import { 
@@ -7,16 +7,20 @@ import {
     UserController, 
     BookingController, 
     ContactController 
-} from '../controllers/index';
-import { BirthdayPartyController } from '../controllers/birthdayParty';
-import { PaintingPartyController } from '../controllers/paintingParty';
-import { ArtClassController } from '../controllers/artClass';
+} from '../controllers/index.js';
+import { BirthdayPartyController } from '../controllers/birthdayParty.js';
+import { PaintingPartyController } from '../controllers/paintingParty.js';
+import { ArtClassController } from '../controllers/artClass.js';
+import { PaymentController } from '../controllers/payment.js';
+import * as AdminController from '../controllers/admin.js';
+import { authenticateAdmin } from '../middleware/auth.js';
 
 const router = Router();
 const indexController = new IndexController();
 const birthdayPartyController = new BirthdayPartyController();
 const paintingPartyController = new PaintingPartyController();
 const artClassController = new ArtClassController();
+const paymentController = new PaymentController();
 const userController = new UserController();
 const bookingController = new BookingController();
 const contactController = new ContactController();
@@ -33,6 +37,7 @@ export function setRoutes(app: Express) {
     router.get('/birthday-parties/:id', birthdayPartyController.getById);
     router.put('/birthday-parties/:id', birthdayPartyController.update);
     router.delete('/birthday-parties/:id', birthdayPartyController.delete);
+    router.post('/birthday-parties/:id/payment', birthdayPartyController.updatePayment.bind(birthdayPartyController));
 
     // Painting Parties CRUD
     router.post('/painting-parties', paintingPartyController.create);
@@ -40,6 +45,7 @@ export function setRoutes(app: Express) {
     router.get('/painting-parties/:id', paintingPartyController.getById);
     router.put('/painting-parties/:id', paintingPartyController.update);
     router.delete('/painting-parties/:id', paintingPartyController.delete);
+    router.post('/painting-parties/:id/payment', paintingPartyController.updatePayment.bind(paintingPartyController));
 
     // Art Classes CRUD
     router.post('/art-classes', artClassController.create);
@@ -47,41 +53,17 @@ export function setRoutes(app: Express) {
     router.get('/art-classes/:id', artClassController.getById);
     router.put('/art-classes/:id', artClassController.update);
     router.delete('/art-classes/:id', artClassController.delete);
+    router.post('/art-classes/:id/payment', artClassController.updatePayment.bind(artClassController));
 
-    // PayPal endpoints
-    // Create PayPal order
-    router.post('/paypal/create-order', async (req, res) => {
-        const request = new checkoutNodeJssdk.orders.OrdersCreateRequest();
-        request.prefer('return=representation');
-        request.requestBody({
-            intent: 'CAPTURE',
-            purchase_units: [{
-                amount: {
-                    currency_code: 'USD',
-                    value: req.body.amount
-                }
-            }]
-        });
-            try {
-                const order = await paypalClient.execute(request);
-                console.log('PayPal order response:', order);
-                res.json({ id: order && order.result && order.result.id ? order.result.id : null, raw: order });
-            } catch (err) {
-                console.error('PayPal create-order error:', err);
-                res.status(500).json({ error: err });
-        }
-    });
+    // PayPal Payment endpoints
+    router.post('/payments/create-order', paymentController.createOrder.bind(paymentController));
+    router.post('/payments/capture-order', paymentController.captureOrder.bind(paymentController));
+    router.get('/payments/order/:orderID', paymentController.getOrder.bind(paymentController));
 
-    // Capture PayPal order
-    router.post('/paypal/capture-order', async (req, res) => {
-        const { orderID } = req.body;
-    const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderID);
-    // No request body needed for capture
-        try {
-            const capture = await paypalClient.execute(request);
-            res.json(capture.result);
-        } catch (err) {
-            res.status(500).send('Error capturing PayPal order');
-        }
-    });
+    // Admin routes
+    router.post('/admin/login', AdminController.login);
+    router.get('/admin/bookings', authenticateAdmin, AdminController.getAllBookings);
+    router.get('/admin/painting-parties', authenticateAdmin, AdminController.getPaintingPartyBookings);
+    router.get('/admin/birthday-parties', authenticateAdmin, AdminController.getBirthdayPartyBookings);
+    router.get('/admin/art-classes', authenticateAdmin, AdminController.getArtClassBookings);
 }

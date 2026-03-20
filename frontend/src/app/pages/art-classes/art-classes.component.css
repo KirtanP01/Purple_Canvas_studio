@@ -113,7 +113,14 @@
 .brand-studio {
   font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 24px;
+  color: rgba(18, 13, 28, 1);
+}
+
+.brand-LCC {
+  font-family: 'Protest Revolution', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
   color: rgba(18, 13, 28, 1);
 }
 
@@ -969,6 +976,8 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 16px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .contact-item a:hover {
@@ -992,6 +1001,127 @@
 
 .enrollment-info a:hover {
   text-decoration: underline;
+}
+
+/* ===========================
+   ENROLLMENT CTA SECTION
+   =========================== */
+.enrollment-cta-section {
+  background: linear-gradient(135deg, #f8f5ff 0%, #fff 100%);
+  border-radius: 24px;
+  padding: 64px 32px !important;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
+  margin-bottom: 48px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.enrollment-cta-section .section-title {
+  text-align: center;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.enrollment-cta-section .section-subtitle {
+  text-align: center;
+  margin: 0 auto 16px;
+}
+
+.enrollment-cta-section .cta-note {
+  text-align: center;
+  margin: 24px auto 0;
+}
+
+.enrollment-cta-section .cta-decoration {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.enrollment-cta-section .star {
+  font-size: 32px;
+  animation: twinkle 2s infinite;
+}
+
+.enrollment-cta-section .star:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.enrollment-cta-section .star:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.book-class-btn {
+  font-family: 'Protest Revolution', cursive !important;
+  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+  color: white;
+  border: none;
+  padding: 20px 56px;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  margin: 24px auto 0;
+  display: block;
+}
+
+.book-class-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+}
+
+.book-class-btn:active {
+  transform: translateY(-2px) scale(1);
+}
+
+.cta-note {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 16px;
+  color: #6B7280;
+  margin-top: 24px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.section-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+  color: #6B7280;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.contact-info-section {
+  margin-bottom: 48px;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@media (max-width: 768px) {
+  .enrollment-cta-section {
+    padding: 48px 20px !important;
+  }
+  
+  .book-class-btn {
+    width: 100%;
+    padding: 18px 32px;
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 768px) {

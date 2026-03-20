@@ -10,12 +10,15 @@
             <span class="brand-canvas">Canvas</span>
             <span class="brand-space"> </span>
             <span class="brand-studio">Studio</span>
+            <span class="brand-space"> </span>
+            <span class="brand-LCC">LCC</span>
           </a>
         </div>
       </div>
       <nav class="navbar-nav">
         <div class="nav-links">
-          <a href="#" class="nav-link">Activities</a>
+          <a [routerLink]="['/']" class="nav-link">Home</a>
+          <a [routerLink]="['/activities']" class="nav-link">Activities</a>
           <a href="http://purplecanvasshop.s3-website-us-east-1.amazonaws.com/" target="_blank" class="nav-link">Shop</a>
           <a [routerLink]="['/reviews']" class="nav-link">Reviews</a>
           <a [routerLink]="['/gallery']" class="nav-link">Gallery</a>
