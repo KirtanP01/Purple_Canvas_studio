@@ -8,7 +8,7 @@
         <!-- Sign Up Form Section -->
         <section class="section signup-form-section">
           <div class="section-icon">🎨</div>
-          <h2 class="section-title">🎉 Reserve Your Painting Party 🎨</h2>
+          <h2 #pageTopHeading tabindex="-1" class="section-title">🎉 Reserve Your Painting Party 🎨</h2>
           <p class="section-subtitle">Fill out the form below and we'll get back to you within 24 hours!</p>
           
           <form class="party-signup-form" #signupForm="ngForm" (ngSubmit)="onSubmitSignup(signupForm)" *ngIf="!showPayPal">

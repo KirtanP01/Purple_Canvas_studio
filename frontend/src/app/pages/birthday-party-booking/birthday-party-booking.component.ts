@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, Inject, inject } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer2, ElementRef, ViewChild, Inject, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
@@ -17,7 +17,8 @@ declare var paypal: any;
   standalone: true,
   imports: [FormsModule, HttpClientModule, NavbarComponent, CommonModule]
 })
-export class BirthdayPartyBookingComponent implements OnInit {
+export class BirthdayPartyBookingComponent implements OnInit, AfterViewInit {
+  @ViewChild('pageTopHeading') pageTopHeading?: ElementRef<HTMLElement>;
   showPayPal = false;
   bookingId: number | null = null;
   bookingData: any = null;
@@ -34,7 +35,30 @@ export class BirthdayPartyBookingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.scrollToTop();
     this.loadPayPalScript();
+  }
+
+  ngAfterViewInit() {
+    this.scrollToTopAndFocusHeading();
+  }
+
+  private scrollToTopAndFocusHeading(): void {
+    this.scrollToTop();
+    this.pageTopHeading?.nativeElement.focus({ preventScroll: true });
+  }
+
+  private scrollToTop(): void {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+    this.document.documentElement.scrollTop = 0;
+    this.document.body.scrollTop = 0;
+
+    this.document
+      .querySelectorAll<HTMLElement>('.main-content, .page-container')
+      .forEach((container) => {
+        container.scrollTop = 0;
+      });
   }
 
   loadPayPalScript() {
