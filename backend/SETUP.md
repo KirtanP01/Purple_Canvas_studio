@@ -44,7 +44,20 @@ cd backend
 npm install
 ```
 
-### 3. Start the Backend Server
+### 3. Create Admin Login (DB + hashed password)
+Set ADMIN_USERNAME and ADMIN_PASSWORD in .env (or pass args), then run:
+
+```bash
+npm run admin:create
+```
+
+Optional explicit args:
+
+```bash
+node tools/create_admin_user.js --username admin --password your_secure_password
+```
+
+### 4. Start the Backend Server
 ```bash
 npm run dev
 ```

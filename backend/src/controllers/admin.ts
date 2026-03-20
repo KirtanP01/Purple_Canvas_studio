@@ -12,18 +12,31 @@ export const login = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'Username and password are required' });
     }
 
-    // For simplicity, using hardcoded admin credentials
-    // In production, this should be stored in database with hashed password
-    const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+    const result = await pool.query(
+      `SELECT id, username, password_hash, role, is_active
+       FROM admin_users
+       WHERE username = $1
+       LIMIT 1`,
+      [String(username).trim()]
+    );
 
-    if (username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD) {
+    const adminUser = result.rows[0];
+    if (!adminUser || adminUser.is_active === false) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    const isPasswordValid = await bcrypt.compare(String(password), adminUser.password_hash);
+    if (!isPasswordValid) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
     const secret = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
     const token = jwt.sign(
-      { id: 1, username: ADMIN_USERNAME, role: 'admin' },
+      {
+        id: adminUser.id,
+        username: adminUser.username,
+        role: adminUser.role || 'admin'
+      },
       secret,
       { expiresIn: '24h' }
     );
@@ -31,9 +44,9 @@ export const login = async (req: Request, res: Response) => {
     res.json({
       token,
       user: {
-        id: 1,
-        username: ADMIN_USERNAME,
-        role: 'admin'
+        id: adminUser.id,
+        username: adminUser.username,
+        role: adminUser.role || 'admin'
       }
     });
   } catch (error) {

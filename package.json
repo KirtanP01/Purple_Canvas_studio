@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "smoke:api": "npm --prefix backend run smoke:api",
+    "smoke:api:cleanup": "npm --prefix backend run smoke:api:cleanup"
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "pg": "^8.16.3"

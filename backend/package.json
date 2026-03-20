@@ -8,7 +8,11 @@
     "start": "node --loader ts-node/esm src/app.ts",
     "dev": "nodemon --exec node --loader ts-node/esm src/app.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "admin:create": "node tools/create_admin_user.js",
+    "smoke:api": "node tools/booking-smoke-test.mjs",
+    "smoke:api:keep": "node tools/booking-smoke-test.mjs --keep-data",
+    "smoke:api:cleanup": "node tools/booking-smoke-test.mjs --cleanup-only"
   },
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",

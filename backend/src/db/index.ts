@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+import bcrypt from 'bcryptjs';
 
 dotenv.config();
 
@@ -94,6 +95,27 @@ const initializeTables = async () => {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
+        `);
+
+        // Create admin_users table for secure admin authentication.
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS admin_users (
+                id SERIAL PRIMARY KEY,
+                username VARCHAR(100) UNIQUE NOT NULL,
+                password_hash VARCHAR(255) NOT NULL,
+                role VARCHAR(20) NOT NULL DEFAULT 'admin',
+                is_active BOOLEAN NOT NULL DEFAULT TRUE,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        `);
+
+        await pool.query(`
+            ALTER TABLE admin_users
+            ADD COLUMN IF NOT EXISTS role VARCHAR(20) NOT NULL DEFAULT 'admin',
+            ADD COLUMN IF NOT EXISTS is_active BOOLEAN NOT NULL DEFAULT TRUE,
+            ADD COLUMN IF NOT EXISTS created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
         `);
 
         // Create art_classes table
@@ -229,6 +251,27 @@ const initializeTables = async () => {
             ADD COLUMN IF NOT EXISTS approved_at TIMESTAMP,
             ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
         `);
+
+        // One-time bootstrap: seed admin_users with a hashed password when env vars are provided.
+        const bootstrapAdminUsername = process.env.ADMIN_USERNAME?.trim();
+        const bootstrapAdminPassword = process.env.ADMIN_PASSWORD;
+
+        if (bootstrapAdminUsername && bootstrapAdminPassword) {
+            const existingAdmin = await pool.query(
+                'SELECT id FROM admin_users WHERE username = $1 LIMIT 1',
+                [bootstrapAdminUsername]
+            );
+
+            if (existingAdmin.rowCount === 0) {
+                const passwordHash = await bcrypt.hash(bootstrapAdminPassword, 12);
+                await pool.query(
+                    `INSERT INTO admin_users (username, password_hash, role, is_active)
+                     VALUES ($1, $2, 'admin', TRUE)`,
+                    [bootstrapAdminUsername, passwordHash]
+                );
+                console.log(`🔐 Seeded admin user "${bootstrapAdminUsername}" with hashed password`);
+            }
+        }
 
         console.log('📋 Database tables initialized successfully');
     } catch (error) {
