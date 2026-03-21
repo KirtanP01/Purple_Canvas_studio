@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  apiUrl: 'http://ec2-54-90-110-200.compute-1.amazonaws.com:5000/api',\n  paypalClientId: 'AfuuTRgOsH2964InMYq6Or9DEC53KGK33MXoUBSvr2bSswAs1B4mU5UnxR1Xyis_rQbo3igSGHYw9aq9'\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

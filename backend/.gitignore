@@ -27,6 +27,6 @@ Thumbs.db
 *.swo
 
 # Database
-#*.sql
-#!schema.sql
-#!migrate*.sql
+4*.sql
+!schema.sql
+!migrate*.sql

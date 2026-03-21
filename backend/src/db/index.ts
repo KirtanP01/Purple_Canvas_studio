@@ -252,6 +252,17 @@ const initializeTables = async () => {
             ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
         `);
 
+        // Backfill columns that may be missing from older art_classes table versions.
+        await pool.query(`
+            ALTER TABLE art_classes
+            ADD COLUMN IF NOT EXISTS enroll_date DATE,
+            ADD COLUMN IF NOT EXISTS student_name VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS student_age INTEGER,
+            ADD COLUMN IF NOT EXISTS parent_name VARCHAR(100),
+            ADD COLUMN IF NOT EXISTS class_type VARCHAR(50),
+            ADD COLUMN IF NOT EXISTS preferred_day VARCHAR(50);
+        `);
+
         // One-time bootstrap: seed admin_users with a hashed password when env vars are provided.
         const bootstrapAdminUsername = process.env.ADMIN_USERNAME?.trim();
         const bootstrapAdminPassword = process.env.ADMIN_PASSWORD;

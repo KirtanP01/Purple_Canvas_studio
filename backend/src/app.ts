@@ -15,7 +15,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://www.paypal.com", "https://www.paypalobjects.com"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+            fontSrc: ["'self'", "https://fonts.gstatic.com", "https://fonts.googleapis.com", "data:"],
+            imgSrc: ["'self'", "data:", "https:", "blob:"],
+            connectSrc: ["'self'", "https://www.paypal.com", "https://api.paypal.com", "https://api.sandbox.paypal.com"],
+            frameSrc: ["'self'", "https://www.paypal.com", "https://www.sandbox.paypal.com"],
+        },
+    },
+}));
 
 // CORS middleware
 app.use(cors({
